@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle } from "lucide-react";
-import Image from "next/image";
 
 export default function FinalCTA() {
     const ref = useRef(null);
@@ -68,13 +67,14 @@ export default function FinalCTA() {
             <footer className="bg-navy-950 py-8 border-t border-navy-800/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <Image
-                            src="/ScaleUp.GO.png"
-                            alt="ScaleUp.GO"
-                            width={100}
-                            height={25}
-                            className="h-5 w-auto brightness-0 invert"
-                        />
+                        <div className="flex items-center">
+                            <span className="text-lg text-white" style={{ fontFamily: "var(--font-changa-one)" }}>
+                                ScaleUp
+                            </span>
+                            <span className="text-lg text-accent-400" style={{ fontFamily: "var(--font-changa-one)" }}>
+                                .Go
+                            </span>
+                        </div>
                         <p className="text-navy-400 text-sm">
                             &copy; 2026 ScaleUp.Go. All rights reserved.
                         </p>

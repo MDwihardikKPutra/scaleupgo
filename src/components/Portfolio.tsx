@@ -37,7 +37,7 @@ export default function Portfolio() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section id="portfolio" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <section id="portfolio" className="py-20 sm:py-28 bg-[#F8F9FA] relative overflow-hidden">
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-400/5 rounded-full blur-3xl pointer-events-none" />
 
             <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

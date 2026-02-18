@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 
 const navLinks = [
     { label: "Services", href: "#services" },
@@ -28,22 +27,20 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-navy-900/5 border-b border-navy-100/50"
-                : "bg-transparent"
+                    ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-navy-900/5 border-b border-navy-100/50"
+                    : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo */}
                     <a href="#" className="flex items-center group">
-                        <Image
-                            src="/ScaleUp.GO(biru).png"
-                            alt="ScaleUp.GO"
-                            width={120}
-                            height={30}
-                            className="h-6 lg:h-8 w-auto"
-                            priority
-                        />
+                        <span className="text-xl lg:text-2xl font-[var(--font-changa-one)] text-navy-900 tracking-tight" style={{ fontFamily: "var(--font-changa-one)" }}>
+                            ScaleUp
+                        </span>
+                        <span className="text-xl lg:text-2xl font-[var(--font-changa-one)] text-accent-500" style={{ fontFamily: "var(--font-changa-one)" }}>
+                            .Go
+                        </span>
                     </a>
 
                     {/* Desktop Nav */}
@@ -52,10 +49,10 @@ export default function Navbar() {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-navy-700 hover:text-accent-400 transition-colors duration-200 relative group"
+                                className="text-sm font-medium text-navy-700 hover:text-accent-500 transition-colors duration-200 relative group"
                             >
                                 {link.label}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full" />
                             </a>
                         ))}
                         <a
@@ -95,7 +92,7 @@ export default function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="block py-3 px-4 text-sm font-medium text-navy-700 hover:text-accent-400 hover:bg-navy-50/50 rounded-xl transition-all duration-200"
+                                    className="block py-3 px-4 text-sm font-medium text-navy-700 hover:text-accent-500 hover:bg-navy-50/50 rounded-xl transition-all duration-200"
                                 >
                                     {link.label}
                                 </a>

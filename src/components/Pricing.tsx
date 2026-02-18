@@ -120,10 +120,7 @@ export default function Pricing() {
                                 <div className="p-8 sm:p-10">
                                     {/* Header */}
                                     <div className="mb-6">
-                                        <p
-                                            className={`text-sm font-semibold mb-1 ${tier.popular ? "text-accent-400" : "text-accent-400"
-                                                }`}
-                                        >
+                                        <p className="text-sm font-semibold mb-1 text-accent-400">
                                             {tier.type}
                                         </p>
                                         <h3

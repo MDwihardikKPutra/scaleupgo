@@ -11,8 +11,8 @@ const values = [
         subtitle: "Anti-Banned",
         description:
             "Website Anda adalah milik Anda sepenuhnya. Tidak seperti marketplace, tidak ada risiko akun dibanned atau kebijakan berubah mendadak.",
-        gradient: "from-blue-500 to-navy-600",
         bg: "bg-blue-50",
+        stroke: "#0A4FA6",
     },
     {
         icon: Zap,
@@ -20,8 +20,8 @@ const values = [
         subtitle: "SEO Friendly",
         description:
             "Dibangun dengan teknologi terbaru sehingga website cepat diakses. Dioptimasi agar mudah ditemukan di Google oleh calon pelanggan Anda.",
-        gradient: "from-accent-400 to-accent-600",
         bg: "bg-accent-50",
+        stroke: "#2563EB",
     },
     {
         icon: HeartHandshake,
@@ -29,8 +29,8 @@ const values = [
         subtitle: "Gak Perlu Paham Coding",
         description:
             "Anda cukup bilang maunya seperti apa, kami yang kerjakan. Dari desain, development, sampai online — semua kami handle.",
-        gradient: "from-emerald-500 to-green-600",
         bg: "bg-emerald-50",
+        stroke: "#10b981",
     },
 ];
 
@@ -77,22 +77,12 @@ export default function WhyChooseUs() {
                                 <div
                                     className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                                 >
-                                    <item.icon
-                                        size={26}
-                                        className={`bg-gradient-to-br ${item.gradient} text-transparent`}
-                                        style={{
-                                            stroke: item.gradient.includes("accent")
-                                                ? "#2563EB"
-                                                : item.gradient.includes("blue")
-                                                    ? "#0A4FA6"
-                                                    : "#10b981",
-                                        }}
-                                    />
+                                    <item.icon size={26} style={{ stroke: item.stroke }} />
                                 </div>
                                 <h3 className="text-xl font-bold text-navy-900 mb-1">
                                     {item.title}
                                 </h3>
-                                <p className="text-accent-400 font-semibold text-sm mb-3">
+                                <p className="text-accent-500 font-semibold text-sm mb-3">
                                     {item.subtitle}
                                 </p>
                                 <p className="text-navy-500 leading-relaxed text-sm">

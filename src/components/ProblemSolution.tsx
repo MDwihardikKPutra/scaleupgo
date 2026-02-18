@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
     MessageCircle,
@@ -15,33 +14,15 @@ import {
 } from "lucide-react";
 
 const oldWay = [
-    {
-        icon: MessageCircle,
-        text: "Balas chat satu-satu, capek & lambat",
-    },
-    {
-        icon: BookOpen,
-        text: "Rekap orderan di buku, rawan salah hitung",
-    },
-    {
-        icon: Clock,
-        text: "Customer kabur karena slow respon",
-    },
+    { icon: MessageCircle, text: "Balas chat satu-satu, capek & lambat" },
+    { icon: BookOpen, text: "Rekap orderan di buku, rawan salah hitung" },
+    { icon: Clock, text: "Customer kabur karena slow respon" },
 ];
 
 const newWay = [
-    {
-        icon: Rocket,
-        text: "Orderan masuk otomatis ke dashboard",
-    },
-    {
-        icon: RefreshCw,
-        text: "Buka 24 Jam tanpa harus standby",
-    },
-    {
-        icon: BarChart3,
-        text: "Data pelanggan rapi & bisa dianalisa",
-    },
+    { icon: Rocket, text: "Orderan masuk otomatis ke dashboard" },
+    { icon: RefreshCw, text: "Buka 24 Jam tanpa harus standby" },
+    { icon: BarChart3, text: "Data pelanggan rapi & bisa dianalisa" },
 ];
 
 export default function ProblemSolution() {
@@ -50,7 +31,6 @@ export default function ProblemSolution() {
 
     return (
         <section className="py-20 sm:py-28 bg-[#F8F9FA] relative overflow-hidden">
-            {/* Background Decoration */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy-200/50 to-transparent" />
 
             <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

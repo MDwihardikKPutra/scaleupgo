@@ -70,7 +70,7 @@ export default function Hero() {
                                 href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-400 text-white font-bold text-base rounded-full hover:bg-accent-500 hover:shadow-xl hover:shadow-accent-400/25 transform hover:-translate-y-1 transition-all duration-300"
+                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-bold text-base rounded-full hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/25 transform hover:-translate-y-1 transition-all duration-300"
                             >
                                 Buat Website Sekarang
                                 <ArrowRight
@@ -115,7 +115,6 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                         className="relative hidden lg:flex items-center justify-center"
                     >
-                        {/* Laptop Mockup */}
                         <div className="relative">
                             <motion.div
                                 animate={{ y: [0, -12, 0] }}
@@ -125,7 +124,6 @@ export default function Hero() {
                                 {/* Laptop Frame */}
                                 <div className="w-[480px] h-[300px] bg-navy-900 rounded-2xl p-3 shadow-2xl shadow-navy-900/30">
                                     <div className="w-full h-full bg-gradient-to-br from-white to-navy-50 rounded-lg overflow-hidden relative">
-                                        {/* Browser Chrome */}
                                         <div className="flex items-center gap-1.5 px-3 py-2 bg-navy-100/60">
                                             <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
                                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
@@ -134,7 +132,6 @@ export default function Hero() {
                                                 <span className="text-[10px] text-navy-400">www.tokosaya.com</span>
                                             </div>
                                         </div>
-                                        {/* Mock Content */}
                                         <div className="p-4 space-y-3">
                                             <div className="flex items-center gap-2">
                                                 <Monitor size={14} className="text-accent-400" />
@@ -155,7 +152,6 @@ export default function Hero() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* Laptop Base */}
                                 <div className="w-[520px] h-4 bg-navy-800 rounded-b-xl mx-auto -mt-0.5 relative">
                                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-navy-700 rounded-b" />
                                 </div>
@@ -169,7 +165,6 @@ export default function Hero() {
                             >
                                 <div className="w-[120px] h-[220px] bg-navy-900 rounded-[20px] p-1.5 shadow-2xl shadow-navy-900/40">
                                     <div className="w-full h-full bg-gradient-to-br from-white to-navy-50 rounded-[14px] overflow-hidden relative">
-                                        {/* Phone Notch */}
                                         <div className="flex justify-center pt-1.5">
                                             <div className="w-12 h-1.5 bg-navy-200 rounded-full" />
                                         </div>
@@ -215,7 +210,7 @@ export default function Hero() {
                             >
                                 <div className="flex items-center gap-2">
                                     <div className="w-8 h-8 bg-accent-50 rounded-full flex items-center justify-center">
-                                        <span className="text-accent-400 text-xs font-bold">24h</span>
+                                        <span className="text-accent-500 text-xs font-bold">24h</span>
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-semibold text-navy-800">Online 24 Jam</p>
