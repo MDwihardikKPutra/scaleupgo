@@ -1,52 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Monitor, Smartphone } from "lucide-react";
+import { ArrowRight, Monitor, Smartphone, CheckCircle2 } from "lucide-react";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-white via-navy-50/30 to-white pt-20">
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg pt-20 lg:pt-0">
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-navy-900/5 rounded-full blur-3xl" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-accent-400/5 to-navy-600/5 rounded-full blur-3xl" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-500/10 rounded-full blur-[120px]" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-600/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-500/5 rounded-full blur-[120px]" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-12 lg:py-0">
                     {/* Left: Content */}
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="relative z-10"
+                        initial={{ opacity: 0, x: -40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-accent-50 border border-accent-200 rounded-full text-accent-600 text-sm font-medium mb-6"
+                            className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-accent-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8"
                         >
-                            <span className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" />
-                            Web Development Agency for UMKM
+                            <span className="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse" />
+                            Web Agency for Success
                         </motion.div>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-navy-900 leading-[1.1] tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tighter">
                             Scale Up
                             <br />
                             Your Business,
                             <br />
-                            <span className="relative">
-                                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-500">
-                                    Go Digital.
-                                </span>
-                                <motion.span
-                                    initial={{ width: 0 }}
-                                    animate={{ width: "100%" }}
-                                    transition={{ delay: 0.8, duration: 0.6 }}
-                                    className="absolute bottom-2 left-0 h-3 bg-accent-400/15 -z-0"
-                                />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
+                                Go Digital.
                             </span>
                         </h1>
 
@@ -54,33 +45,30 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.6 }}
-                            className="mt-6 text-lg sm:text-xl text-navy-600 leading-relaxed max-w-lg"
+                            className="mt-6 text-base sm:text-lg text-white/60 leading-relaxed max-w-xl font-medium"
                         >
                             Ubah followers jadi pembeli. Stop cara manual, biarkan website
-                            bekerja <span className="font-semibold text-navy-800">24 jam</span> untuk bisnis Anda.
+                            bekerja <span className="font-bold text-white/90 underline underline-offset-4 decoration-accent-500/50">24 jam</span> untuk bisnis Anda.
                         </motion.p>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6, duration: 0.5 }}
-                            className="mt-8 flex flex-col sm:flex-row gap-4"
+                            className="mt-10 flex flex-col sm:flex-row gap-4"
                         >
                             <a
                                 href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-bold text-base rounded-full hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/25 transform hover:-translate-y-1 transition-all duration-300"
+                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-black text-sm rounded-2xl hover:bg-accent-600 hover:shadow-2xl hover:shadow-accent-500/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
                             >
                                 Buat Website Sekarang
-                                <ArrowRight
-                                    size={18}
-                                    className="group-hover:translate-x-1 transition-transform"
-                                />
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </a>
                             <a
                                 href="#services"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-navy-900 font-semibold text-base rounded-full border-2 border-navy-200 hover:border-navy-900 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white font-bold text-sm rounded-2xl border border-white/15 backdrop-blur-md hover:bg-white/10 hover:border-white/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
                             >
                                 Lihat Layanan
                             </a>
@@ -91,93 +79,99 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8, duration: 0.5 }}
-                            className="mt-10 flex items-center gap-6 text-sm text-navy-500"
+                            className="mt-12 flex flex-wrap items-center gap-8"
                         >
-                            <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                                50+ Website Dibuat
+                            <div className="flex items-center gap-2.5 group">
+                                <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <CheckCircle2 size={16} className="text-accent-400" />
+                                </div>
+                                <div>
+                                    <p className="text-white font-bold text-xs uppercase tracking-wider">50+ Website</p>
+                                    <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">Selesai Dibuat</p>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                                UMKM Trusted
+                            <div className="flex items-center gap-2.5 group">
+                                <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <CheckCircle2 size={16} className="text-accent-400" />
+                                </div>
+                                <div>
+                                    <p className="text-white font-bold text-xs uppercase tracking-wider">Trusted Agency</p>
+                                    <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">Client Nasional</p>
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
 
                     {/* Right: Device Mockup */}
                     <motion.div
-                        initial={{ opacity: 0, x: 60 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                        initial={{ opacity: 0, scale: 0.8, x: 60 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="relative hidden lg:flex items-center justify-center"
                     >
                         <div className="relative">
                             <motion.div
                                 animate={{ y: [0, -12, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                                 className="relative"
                             >
                                 {/* Laptop Frame */}
-                                <div className="w-[480px] h-[300px] bg-navy-900 rounded-2xl p-3 shadow-2xl shadow-navy-900/30">
-                                    <div className="w-full h-full bg-gradient-to-br from-white to-navy-50 rounded-lg overflow-hidden relative">
-                                        <div className="flex items-center gap-1.5 px-3 py-2 bg-navy-100/60">
-                                            <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                                            <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                                            <div className="ml-3 flex-1 h-5 bg-white rounded-md flex items-center px-2">
-                                                <span className="text-[10px] text-navy-400">www.tokosaya.com</span>
+                                <div className="w-[480px] h-[300px] bg-dark-surface rounded-3xl p-3 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10">
+                                    <div className="w-full h-full bg-dark-card rounded-2xl overflow-hidden relative border border-white/5">
+                                        <div className="flex items-center gap-1.5 px-4 py-2 bg-dark-bg/50 backdrop-blur-md border-b border-white/5">
+                                            <div className="flex gap-1">
+                                                <div className="w-2 h-2 rounded-full bg-red-400/40" />
+                                                <div className="w-2 h-2 rounded-full bg-yellow-400/40" />
+                                                <div className="w-2 h-2 rounded-full bg-green-400/40" />
+                                            </div>
+                                            <div className="ml-3 flex-1 h-5 bg-dark-surface/50 border border-white/5 rounded-md flex items-center px-2">
+                                                <span className="text-[9px] text-white/20 font-medium tracking-tight">www.scaleup-go.com</span>
                                             </div>
                                         </div>
-                                        <div className="p-4 space-y-3">
-                                            <div className="flex items-center gap-2">
-                                                <Monitor size={14} className="text-accent-400" />
-                                                <div className="h-3 w-24 bg-navy-200 rounded" />
+                                        <div className="p-5 space-y-4">
+                                            <div className="flex items-center justify-between">
+                                                <div className="h-3 w-20 bg-white/5 rounded-full" />
+                                                <div className="flex gap-2">
+                                                    <div className="h-2 w-8 bg-white/5 rounded-full" />
+                                                    <div className="h-2 w-8 bg-white/5 rounded-full" />
+                                                </div>
                                             </div>
-                                            <div className="h-24 bg-gradient-to-r from-accent-400/20 to-navy-200/30 rounded-lg flex items-center justify-center">
-                                                <span className="text-navy-400 text-xs font-medium">Hero Section</span>
+                                            <div className="h-28 bg-accent-500/5 rounded-xl border border-accent-500/10 flex items-center justify-center">
+                                                <div className="text-center">
+                                                    <div className="w-7 h-7 rounded-full bg-accent-500/20 flex items-center justify-center mx-auto mb-2">
+                                                        <Monitor size={12} className="text-accent-400" />
+                                                    </div>
+                                                    <span className="text-white/20 text-[9px] font-black uppercase tracking-[0.2em]">Scale Up</span>
+                                                </div>
                                             </div>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                <div className="h-14 bg-navy-100 rounded-lg" />
-                                                <div className="h-14 bg-navy-100 rounded-lg" />
-                                                <div className="h-14 bg-navy-100 rounded-lg" />
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-2">
-                                                <div className="h-8 bg-accent-400/20 rounded-lg" />
-                                                <div className="h-8 bg-navy-100 rounded-lg" />
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <div className="h-16 bg-white/5 rounded-xl" />
+                                                <div className="h-16 bg-white/5 rounded-xl" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="w-[520px] h-4 bg-navy-800 rounded-b-xl mx-auto -mt-0.5 relative">
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-navy-700 rounded-b" />
-                                </div>
+                                {/* Base */}
+                                <div className="w-[520px] h-4 bg-dark-surface/80 rounded-b-2xl mx-auto -mt-0.5 border-x border-b border-white/10 blur-[0.5px]" />
                             </motion.div>
 
                             {/* Phone Mockup */}
                             <motion.div
                                 animate={{ y: [0, -8, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                                className="absolute -bottom-8 -right-8"
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                                className="absolute -bottom-10 -right-8 hidden xl:block"
                             >
-                                <div className="w-[120px] h-[220px] bg-navy-900 rounded-[20px] p-1.5 shadow-2xl shadow-navy-900/40">
-                                    <div className="w-full h-full bg-gradient-to-br from-white to-navy-50 rounded-[14px] overflow-hidden relative">
-                                        <div className="flex justify-center pt-1.5">
-                                            <div className="w-12 h-1.5 bg-navy-200 rounded-full" />
+                                <div className="w-[120px] h-[220px] bg-dark-surface rounded-[2rem] p-1.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] border border-white/10">
+                                    <div className="w-full h-full bg-dark-card rounded-[1.75rem] overflow-hidden relative border border-white/5">
+                                        <div className="flex justify-center pt-2">
+                                            <div className="w-12 h-1.5 bg-dark-bg rounded-full" />
                                         </div>
-                                        <div className="p-2 space-y-2 mt-1">
-                                            <div className="flex items-center gap-1">
-                                                <Smartphone size={8} className="text-accent-400" />
-                                                <div className="h-2 w-10 bg-navy-200 rounded" />
-                                            </div>
-                                            <div className="h-12 bg-gradient-to-r from-accent-400/20 to-navy-200/30 rounded-md" />
+                                        <div className="p-3 space-y-3 mt-1">
+                                            <div className="h-16 bg-accent-500/5 rounded-lg border border-accent-500/10" />
                                             <div className="space-y-1.5">
-                                                <div className="h-6 bg-navy-100 rounded-md" />
-                                                <div className="h-6 bg-navy-100 rounded-md" />
-                                                <div className="h-5 bg-accent-400/20 rounded-md" />
+                                                <div className="h-6 bg-white/5 rounded-md" />
+                                                <div className="h-6 bg-white/5 rounded-md" />
+                                                <div className="h-5 bg-accent-500/10 rounded-md" />
                                             </div>
                                         </div>
                                     </div>
@@ -186,35 +180,37 @@ export default function Hero() {
 
                             {/* Floating Elements */}
                             <motion.div
-                                animate={{ y: [0, -6, 0], rotate: [0, 3, 0] }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-6 -left-6 px-4 py-2 bg-white rounded-xl shadow-lg shadow-navy-900/10 border border-navy-100"
+                                animate={{ y: [0, -6, 0], rotate: [0, 4, 0] }}
+                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -top-8 -left-8 px-5 py-2.5 bg-dark-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 z-20"
                             >
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                        <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                        </svg>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-9 h-9 bg-green-500/10 rounded-full flex items-center justify-center">
+                                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+                                            <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-semibold text-navy-800">Order Baru!</p>
-                                        <p className="text-[8px] text-navy-500">Rp 250.000</p>
+                                        <p className="text-[10px] font-black text-white uppercase tracking-wider">New Order</p>
+                                        <p className="text-[9px] font-bold text-white/40 tracking-tight">Dashboard</p>
                                     </div>
                                 </div>
                             </motion.div>
 
                             <motion.div
                                 animate={{ y: [0, -10, 0], rotate: [0, -2, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute -bottom-4 -left-12 px-4 py-2 bg-white rounded-xl shadow-lg shadow-navy-900/10 border border-navy-100"
+                                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                                className="absolute bottom-4 -left-12 px-5 py-2.5 bg-dark-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 z-20"
                             >
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 bg-accent-50 rounded-full flex items-center justify-center">
-                                        <span className="text-accent-500 text-xs font-bold">24h</span>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-9 h-9 bg-accent-500/10 rounded-full flex items-center justify-center">
+                                        <span className="text-accent-400 text-[10px] font-black tracking-tighter">24H</span>
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-semibold text-navy-800">Online 24 Jam</p>
-                                        <p className="text-[8px] text-navy-500">Otomatis</p>
+                                        <p className="text-[10px] font-black text-white uppercase tracking-wider">Live Site</p>
+                                        <p className="text-[9px] font-bold text-white/40 tracking-tight">Online</p>
                                     </div>
                                 </div>
                             </motion.div>

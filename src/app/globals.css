@@ -24,6 +24,15 @@
   --color-accent-800: #1E40AF;
   --color-accent-900: #1E3A8A;
 
+  --color-dark-bg: #0B1120;
+  --color-dark-card: #111827;
+  --color-dark-surface: #1a2332;
+  --color-dark-border: #1f2937;
+
+  --color-light-bg: #ffffff;
+  --color-light-surface: #f8f9fa;
+  --color-light-border: #e9ecef;
+
   --font-sans: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -33,7 +42,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #ffffff;
+  background-color: var(--color-light-bg);
   color: #1a1a2e;
 }
 

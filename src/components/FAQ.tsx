@@ -1,107 +1,101 @@
 "use client";
 
-import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
-        question: "Berapa lama pengerjaannya?",
-        answer:
-            "Untuk Landing Page biasanya 3-5 hari kerja, Company Profile 7-10 hari kerja, dan Toko Online 14-21 hari kerja. Timeline bisa lebih cepat atau lebih lama tergantung kompleksitas dan kecepatan feedback dari Anda.",
+        question: "Berapa lama proses pembuatan website?",
+        answer: "Untuk landing page sekitar 3-5 hari kerja, company profile 5-10 hari kerja, dan toko online 10-14 hari kerja. Timeline bisa lebih cepat tergantung kesiapan konten dari klien.",
     },
     {
-        question: "Apakah dapat domain .com?",
-        answer:
-            "Ya! Semua paket sudah termasuk gratis domain .com untuk 1 tahun pertama. Anda bebas memilih nama domain yang tersedia sesuai nama bisnis Anda.",
+        question: "Apakah saya bisa request desain custom?",
+        answer: "Tentu! Semua desain kami custom sesuai brand dan kebutuhan bisnis Anda. Kami akan diskusi detail sebelum mulai desain.",
     },
     {
-        question: "Saya gaptek, apakah dibantu?",
-        answer:
-            "Tentu saja! Konsep kami adalah Terima Beres. Anda hanya perlu menyampaikan kebutuhan dan konten, kami yang mengerjakan semuanya. Setelah website jadi, kami juga sediakan panduan penggunaan dan support.",
+        question: "Apakah sudah termasuk hosting dan domain?",
+        answer: "Ya! Semua paket sudah termasuk gratis domain .com dan hosting untuk 1 tahun pertama. Perpanjangan selanjutnya dengan harga normal.",
     },
     {
-        question: "Apakah bisa request desain custom?",
-        answer:
-            "Bisa banget! Kami akan membuatkan desain sesuai identitas brand Anda. Warna, layout, font, semuanya bisa disesuaikan.",
+        question: "Bagaimana jika saya ingin ada perubahan setelah website jadi?",
+        answer: "Setiap paket sudah termasuk free revisi. Jika ada perubahan di luar scope, kami akan diskusikan biaya tambahan yang transparan.",
     },
     {
-        question: "Bagaimana sistem pembayarannya?",
-        answer:
-            "Pembayaran dilakukan dengan sistem 50% di awal sebagai DP, dan 50% sisanya setelah website selesai dan Anda puas dengan hasilnya.",
+        question: "Apakah website bisa diakses di HP?",
+        answer: "100%! Semua website yang kami buat fully responsive — tampil sempurna di desktop, tablet, maupun smartphone.",
     },
 ];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="py-20 sm:py-28 bg-[#F8F9FA] relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy-200/50 to-transparent" />
+        <section id="faq" className="py-20 sm:py-28 bg-light-bg relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-border to-transparent" />
+
             <div ref={ref} className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header Standardized */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-14"
+                    className="text-center mb-16"
                 >
-                    <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-500 text-sm font-semibold rounded-full mb-4">
-                        FAQ
+                    <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
+                        Customer FAQ
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-                        Pertanyaan yang{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-500">
-                            Sering Ditanyakan
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
+                        Yang Sering{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
+                            Ditanyakan
                         </span>
                     </h2>
+                    <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center">
+                        Segala hal yang perlu Anda ketahui sebelum memulai transformasi digital bersama kami.
+                    </p>
                 </motion.div>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                     {faqs.map((faq, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.4, delay: 0.1 * i }}
+                            transition={{ duration: 0.4, delay: 0.08 * i }}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                                className={`w-full text-left p-5 sm:p-6 rounded-2xl transition-all duration-300 ${openIndex === i
-                                        ? "bg-white shadow-lg shadow-navy-900/5 border border-navy-100"
-                                        : "bg-white/60 hover:bg-white border border-transparent hover:border-navy-100"
+                                className={`w-full flex items-center justify-between p-6 sm:p-8 rounded-[2rem] transition-all duration-500 text-left border ${openIndex === i
+                                        ? "bg-accent-50/50 border-accent-200 shadow-xl shadow-accent-500/[0.03]"
+                                        : "bg-light-surface border-transparent hover:border-light-border hover:bg-white"
                                     }`}
                             >
-                                <div className="flex items-center justify-between gap-4">
-                                    <h3 className={`text-base sm:text-lg font-semibold transition-colors ${openIndex === i ? "text-navy-900" : "text-navy-700"}`}>
-                                        {faq.question}
-                                    </h3>
-                                    <motion.div
-                                        animate={{ rotate: openIndex === i ? 180 : 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${openIndex === i ? "bg-accent-400 text-white" : "bg-navy-100 text-navy-400"}`}
-                                    >
-                                        <ChevronDown size={16} />
-                                    </motion.div>
+                                <span className="text-sm sm:text-base font-bold text-navy-900 pr-6 leading-tight">
+                                    {faq.question}
+                                </span>
+                                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm border ${openIndex === i ? "bg-accent-500 border-accent-400 scale-110 rotate-180" : "bg-white border-light-border text-navy-400"
+                                    }`}>
+                                    <ChevronDown size={18} className={openIndex === i ? "text-white" : "currentColor"} />
                                 </div>
-                                <AnimatePresence>
-                                    {openIndex === i && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="overflow-hidden"
-                                        >
-                                            <p className="mt-4 text-navy-500 leading-relaxed text-sm sm:text-base">
-                                                {faq.answer}
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
                             </button>
+                            <AnimatePresence>
+                                {openIndex === i && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="px-8 sm:px-10 py-6 text-navy-500 text-sm sm:text-base leading-relaxed font-medium">
+                                            {faq.answer}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </motion.div>
                     ))}
                 </div>
