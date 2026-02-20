@@ -11,7 +11,7 @@ const projects = [
         category: "Company Profile",
         description:
             "Website company profile premium untuk perusahaan energi offshore dengan desain corporate modern, animasi dinamis, dan halaman sustainability.",
-        image: "/portfolio-oceanus.svg",
+        image: "/oceanusenergy.png",
         tags: ["Corporate", "Animasi", "Multi-Page"],
         href: "https://oceanusenergy.vercel.app/",
     },
