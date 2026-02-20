@@ -7,12 +7,22 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
     {
+        title: "Oceanus Energy",
+        category: "Company Profile",
+        description:
+            "Website company profile premium untuk perusahaan energi offshore dengan desain corporate modern, animasi dinamis, dan halaman sustainability.",
+        image: "/portfolio-oceanus.svg",
+        tags: ["Corporate", "Animasi", "Multi-Page"],
+        href: "https://oceanusenergy.vercel.app/",
+    },
+    {
         title: "Rotiseri Pagi",
         category: "Toko Online",
         description:
             "Website toko online untuk bakery & cafe dengan fitur katalog produk, pemesanan otomatis, dan integrasi WhatsApp.",
         image: "/portfolio-bakery.png",
         tags: ["E-Commerce", "WhatsApp Order", "Katalog"],
+        href: "#",
     },
     {
         title: "PT Bangun Karya",
@@ -21,14 +31,7 @@ const projects = [
             "Website company profile profesional untuk perusahaan konstruksi dengan halaman proyek, layanan, dan formulir kontak.",
         image: "/portfolio-construction.png",
         tags: ["Multi-Page", "SEO", "Contact Form"],
-    },
-    {
-        title: "Lumina Beauty",
-        category: "Landing Page",
-        description:
-            "Landing page high-converting untuk brand skincare dengan desain elegan, testimoni, dan CTA pembelian.",
-        image: "/portfolio-beauty.png",
-        tags: ["Conversion", "Responsive", "Branding"],
+        href: "#",
     },
 ];
 
@@ -70,48 +73,55 @@ export default function Portfolio() {
                             transition={{ duration: 0.5, delay: 0.15 * i }}
                             className="group cursor-pointer"
                         >
-                            <div className="relative rounded-3xl overflow-hidden border border-navy-100 hover:border-navy-200 hover:shadow-2xl hover:shadow-navy-900/10 transition-all duration-500 bg-white">
-                                {/* Image */}
-                                <div className="relative h-64 overflow-hidden">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                        <div className="w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center">
-                                            <ExternalLink size={16} className="text-navy-900" />
+                            <a
+                                href={project.href}
+                                target={project.href !== "#" ? "_blank" : undefined}
+                                rel={project.href !== "#" ? "noopener noreferrer" : undefined}
+                                className="block"
+                            >
+                                <div className="relative rounded-3xl overflow-hidden border border-navy-100 hover:border-navy-200 hover:shadow-2xl hover:shadow-navy-900/10 transition-all duration-500 bg-white">
+                                    {/* Image */}
+                                    <div className="relative h-64 overflow-hidden">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                            <div className="w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center">
+                                                <ExternalLink size={16} className="text-navy-900" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-6">
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className="px-3 py-1 bg-accent-50 text-accent-600 text-xs font-semibold rounded-full">
+                                                {project.category}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-navy-900 mb-2 group-hover:text-accent-600 transition-colors">
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-navy-500 text-sm leading-relaxed mb-4">
+                                            {project.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.tags.map((tag, j) => (
+                                                <span
+                                                    key={j}
+                                                    className="px-2.5 py-1 bg-navy-50 text-navy-500 text-xs font-medium rounded-lg"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Content */}
-                                <div className="p-6">
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <span className="px-3 py-1 bg-accent-50 text-accent-600 text-xs font-semibold rounded-full">
-                                            {project.category}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-navy-900 mb-2 group-hover:text-accent-600 transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-navy-500 text-sm leading-relaxed mb-4">
-                                        {project.description}
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag, j) => (
-                                            <span
-                                                key={j}
-                                                className="px-2.5 py-1 bg-navy-50 text-navy-500 text-xs font-medium rounded-lg"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </motion.div>
                     ))}
                 </div>
