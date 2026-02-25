@@ -33,6 +33,15 @@ const projects = [
         tags: ["Multi-Page", "SEO", "Contact Form"],
         href: "#",
     },
+    {
+        title: "Luxe Fashion",
+        category: "Landing Page",
+        description:
+            "Landing page eksklusif untuk brand fashion dengan layout estetik, galeri koleksi premium, dan navigasi yang halus.",
+        image: "/Fashion.png",
+        tags: ["Fashion", "Visual", "Responsive"],
+        href: "https://fashion-landingpage-five.vercel.app/",
+    },
 ];
 
 export default function Portfolio() {
@@ -65,7 +74,7 @@ export default function Portfolio() {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
+                <div className="grid md:grid-cols-2 gap-8 sm:gap-6 lg:gap-10 max-w-5xl mx-auto">
                     {projects.map((project, i) => (
                         <motion.div
                             key={i}
