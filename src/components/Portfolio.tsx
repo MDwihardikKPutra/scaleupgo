@@ -25,15 +25,6 @@ const projects = [
         href: "#",
     },
     {
-        title: "PT Bangun Karya",
-        category: "Company Profile",
-        description:
-            "Website company profile profesional untuk perusahaan konstruksi dengan halaman proyek, layanan, dan formulir kontak.",
-        image: "/portfolio-construction.png",
-        tags: ["Multi-Page", "SEO", "Contact Form"],
-        href: "#",
-    },
-    {
         title: "Luxe Fashion",
         category: "Landing Page",
         description:
@@ -74,7 +65,7 @@ export default function Portfolio() {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8 sm:gap-6 lg:gap-10 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
                     {projects.map((project, i) => (
                         <motion.div
                             key={i}
