@@ -32,6 +32,7 @@ const projects = [
         image: "/Fashion.png",
         tags: ["Fashion", "Visual", "Responsive"],
         href: "https://fashion-landingpage-five.vercel.app/",
+        imageClassName: "object-contain p-4 bg-gray-50",
     },
 ];
 
@@ -55,10 +56,7 @@ export default function Portfolio() {
                         Showcase Karya
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
-                        Karya Terbaru{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            Kami
-                        </span>
+                        Portofolio
                     </h2>
                     <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed">
                         Beberapa proyek pilihan yang sudah kami selesaikan dengan standar kualitas premium.
@@ -87,7 +85,8 @@ export default function Portfolio() {
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                                            className={`transition-transform duration-700 ${project.imageClassName || "object-cover object-top group-hover:scale-105"
+                                                }`}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
