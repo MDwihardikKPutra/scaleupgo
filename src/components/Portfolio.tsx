@@ -16,13 +16,13 @@ const projects = [
         href: "https://oceanusenergy.vercel.app/",
     },
     {
-        title: "Rotiseri Pagi",
-        category: "Toko Online",
+        title: "Brewhouse",
+        category: "Landing Page",
         description:
-            "Website toko online untuk bakery & cafe dengan fitur katalog produk, pemesanan otomatis, dan integrasi WhatsApp.",
-        image: "/portfolio-bakery.png",
-        tags: ["E-Commerce", "WhatsApp Order", "Katalog"],
-        href: "#",
+            "Website premium untuk coffee shop & brewery dengan desain modern, layout estetik, dan navigasi yang halus.",
+        image: "/brewhouse.png",
+        tags: ["Coffee Shop", "Premium", "Responsive"],
+        href: "https://brewhouse-rho.vercel.app/",
     },
     {
         title: "Luxe Fashion",
