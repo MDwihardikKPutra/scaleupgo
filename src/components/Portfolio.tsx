@@ -32,7 +32,7 @@ const projects = [
         image: "/Fashion.png",
         tags: ["Fashion", "Visual", "Responsive"],
         href: "https://fashion-landingpage-five.vercel.app/",
-        imageClassName: "object-contain p-4 bg-gray-50",
+        imageClassName: "object-cover object-top",
     },
 ];
 
