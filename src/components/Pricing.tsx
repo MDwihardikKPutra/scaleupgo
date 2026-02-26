@@ -92,22 +92,29 @@ export default function Pricing() {
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.15 * i }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 * i }}
+                            whileHover={{ y: plan.popular ? -15 : -10 }}
                             className="group relative"
                         >
                             {plan.popular && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                                    <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-500 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-accent-500/30">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    transition={{ delay: 1, duration: 0.5 }}
+                                    className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"
+                                >
+                                    <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-500 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-accent-500/30 animate-bounce-subtle">
                                         <Star size={10} fill="currentColor" />
                                         Most Popular
                                     </div>
-                                </div>
+                                </motion.div>
                             )}
 
                             <div className={`relative h-full p-8 sm:p-10 rounded-[2rem] border transition-all duration-500 bg-white ${plan.popular
-                                    ? "border-accent-200 shadow-2xl shadow-accent-500/10 scale-[1.03] z-10"
-                                    : "border-light-border hover:border-navy-200 hover:shadow-xl"
+                                ? "border-accent-200 shadow-2xl shadow-accent-500/10 scale-[1.03] z-10"
+                                : "border-light-border hover:border-navy-200 hover:shadow-xl"
                                 }`}>
                                 <h3 className="text-xl sm:text-2xl font-black text-navy-900 tracking-tight">{plan.name}</h3>
                                 <p className="text-navy-500 text-sm mt-2 mb-8 font-medium">{plan.description}</p>
@@ -138,8 +145,8 @@ export default function Pricing() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`block w-full py-4 text-center text-[11px] font-black uppercase tracking-widest rounded-2xl active:scale-[0.98] transition-all duration-300 ${plan.popular
-                                            ? "bg-accent-500 text-white hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/30"
-                                            : "bg-navy-900 text-white hover:bg-navy-800 hover:shadow-xl shadow-navy-900/10"
+                                        ? "bg-accent-500 text-white hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/30"
+                                        : "bg-navy-900 text-white hover:bg-navy-800 hover:shadow-xl shadow-navy-900/10"
                                         }`}
                                 >
                                     Pesan Sekarang

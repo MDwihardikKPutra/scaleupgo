@@ -75,16 +75,18 @@ export default function Services() {
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.15 * i }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 * i }}
+                            whileHover={{ y: -10 }}
                             className="group"
                         >
-                            <div className="relative h-full p-8 sm:p-10 bg-white rounded-[2rem] border border-light-border hover:border-accent-500/30 hover:shadow-2xl hover:shadow-accent-500/5 transition-all duration-500">
+                            <div className="relative h-full p-8 sm:p-10 bg-white rounded-[2rem] border border-light-border hover:border-accent-400/30 hover:shadow-2xl hover:shadow-accent-500/10 transition-all duration-500 shadow-sm">
                                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]`} />
 
                                 <div className="relative z-10">
-                                    <div className={`w-12 h-12 rounded-2xl ${service.iconBg} group-hover:bg-white/20 flex items-center justify-center mb-8 transition-colors duration-500 shadow-sm border border-light-border/50 group-hover:border-transparent`}>
-                                        <service.icon size={22} className={`${service.iconColor} group-hover:text-white transition-colors duration-500`} />
+                                    <div className={`w-12 h-12 rounded-2xl ${service.iconBg} group-hover:bg-white/20 flex items-center justify-center mb-8 transition-all duration-500 shadow-sm border border-light-border/50 group-hover:border-transparent group-hover:rotate-[10deg]`}>
+                                        <service.icon size={22} className={`${service.iconColor} group-hover:text-white transition-all duration-500`} />
                                     </div>
 
                                     <h3 className="text-xl sm:text-2xl font-black text-navy-900 group-hover:text-white transition-colors duration-500 mb-1 tracking-tight">

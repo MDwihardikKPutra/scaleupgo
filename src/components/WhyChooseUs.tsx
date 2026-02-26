@@ -68,16 +68,18 @@ export default function WhyChooseUs() {
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.15 * i }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 * i }}
+                            whileHover={{ y: -5 }}
                             className="group relative"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-navy-50 to-white rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="relative p-8 sm:p-10 rounded-3xl border border-navy-100 hover:border-navy-200 hover:shadow-xl hover:shadow-navy-900/5 transition-all duration-300 bg-white">
                                 <div
-                                    className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                                    className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm`}
                                 >
-                                    <item.icon size={26} style={{ stroke: item.stroke }} />
+                                    <item.icon size={26} style={{ stroke: item.stroke }} className="group-hover:scale-110 transition-transform duration-300" />
                                 </div>
                                 <h3 className="text-xl font-bold text-navy-900 mb-1">
                                     {item.title}

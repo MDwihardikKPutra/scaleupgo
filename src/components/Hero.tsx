@@ -32,13 +32,30 @@ export default function Hero() {
                         </motion.div>
 
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tighter">
-                            Scale Up
-                            <br />
-                            Your Business,
-                            <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
+                            <motion.span
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.8 }}
+                                className="block"
+                            >
+                                Scale Up
+                            </motion.span>
+                            <motion.span
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4, duration: 0.8 }}
+                                className="block"
+                            >
+                                Your Business,
+                            </motion.span>
+                            <motion.span
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600 block"
+                            >
                                 Go Digital.
-                            </span>
+                            </motion.span>
                         </h1>
 
                         <motion.p
@@ -78,27 +95,29 @@ export default function Hero() {
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8, duration: 0.5 }}
+                            transition={{ delay: 0.8, duration: 0.5, staggerChildren: 0.1 }}
                             className="mt-12 flex flex-wrap items-center gap-8"
                         >
-                            <div className="flex items-center gap-2.5 group">
-                                <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <CheckCircle2 size={16} className="text-accent-400" />
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold text-xs uppercase tracking-wider">50+ Website</p>
-                                    <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">Selesai Dibuat</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2.5 group">
-                                <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <CheckCircle2 size={16} className="text-accent-400" />
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold text-xs uppercase tracking-wider">Trusted Agency</p>
-                                    <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">Client Nasional</p>
-                                </div>
-                            </div>
+                            {[
+                                { label: "50+ Website", sub: "Selesai Dibuat" },
+                                { label: "Trusted Agency", sub: "Client Nasional" },
+                            ].map((indicator, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8 + (i * 0.1) }}
+                                    className="flex items-center gap-2.5 group cursor-default"
+                                >
+                                    <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 group-hover:scale-110 transition-all duration-300">
+                                        <CheckCircle2 size={16} className="text-accent-400 group-hover:text-accent-300 transition-colors" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-bold text-xs uppercase tracking-wider">{indicator.label}</p>
+                                        <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">{indicator.sub}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </motion.div>
                     </motion.div>
 

@@ -63,14 +63,15 @@ export default function FAQ() {
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.4, delay: 0.08 * i }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.05 * i }}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                                 className={`w-full flex items-center justify-between p-6 sm:p-8 rounded-[2rem] transition-all duration-500 text-left border ${openIndex === i
-                                        ? "bg-accent-50/50 border-accent-200 shadow-xl shadow-accent-500/[0.03]"
-                                        : "bg-light-surface border-transparent hover:border-light-border hover:bg-white"
+                                    ? "bg-accent-50/50 border-accent-200 shadow-xl shadow-accent-500/[0.03]"
+                                    : "bg-light-surface border-transparent hover:border-light-border hover:bg-white"
                                     }`}
                             >
                                 <span className="text-sm sm:text-base font-bold text-navy-900 pr-6 leading-tight">

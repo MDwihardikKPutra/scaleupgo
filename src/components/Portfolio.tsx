@@ -32,7 +32,7 @@ const projects = [
         image: "/Fashion.png",
         tags: ["Fashion", "Visual", "Responsive"],
         href: "https://fashion-landingpage-five.vercel.app/",
-        imageClassName: "object-cover object-top",
+        imageClassName: "object-top",
     },
 ];
 
@@ -68,8 +68,10 @@ export default function Portfolio() {
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.15 * i }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 * i }}
+                            whileHover={{ y: -10 }}
                             className="group cursor-pointer"
                         >
                             <a
@@ -85,7 +87,7 @@ export default function Portfolio() {
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            className={`transition-transform duration-700 ${project.imageClassName || "object-cover object-top group-hover:scale-105"
+                                            className={`object-cover transition-transform duration-700 group-hover:scale-105 ${project.imageClassName || "object-top"
                                                 }`}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
