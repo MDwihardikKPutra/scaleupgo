@@ -1,67 +1,74 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ShieldCheck, Zap, HeartHandshake } from "lucide-react";
-
-const values = [
-    {
-        icon: ShieldCheck,
-        title: "Aset Digital Milik Sendiri",
-        subtitle: "Anti-Banned",
-        description:
-            "Website Anda adalah milik Anda sepenuhnya. Tidak seperti marketplace, tidak ada risiko akun dibanned atau kebijakan berubah mendadak.",
-        bg: "bg-blue-50",
-        stroke: "#0A4FA6",
-    },
-    {
-        icon: Zap,
-        title: "Loading Super Cepat",
-        subtitle: "SEO Friendly",
-        description:
-            "Dibangun dengan teknologi terbaru sehingga website cepat diakses. Dioptimasi agar mudah ditemukan di Google oleh calon pelanggan Anda.",
-        bg: "bg-accent-50",
-        stroke: "#2563EB",
-    },
-    {
-        icon: HeartHandshake,
-        title: "Terima Beres",
-        subtitle: "Gak Perlu Paham Coding",
-        description:
-            "Anda cukup bilang maunya seperti apa, kami yang kerjakan. Dari desain, development, sampai online — semua kami handle.",
-        bg: "bg-emerald-50",
-        stroke: "#10b981",
-    },
-];
+import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
+import { Target, Zap, MessageSquare } from "lucide-react";
 
 export default function WhyChooseUs() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const { t } = useLanguage();
+
+    const values = [
+        {
+            title: "Desain Premium",
+            subtitle: "Visual Excellence",
+            desc: t("why.desc1"),
+            icon: Target,
+            bg: "bg-blue-50",
+            stroke: "#2563EB",
+        },
+        {
+            title: "Konversi Tinggi",
+            subtitle: "ROI Oriented",
+            desc: t("why.desc2"),
+            icon: Zap,
+            bg: "bg-accent-50",
+            stroke: "#3B82F6",
+        },
+        {
+            title: "Support 24/7",
+            subtitle: "Reliable Partner",
+            desc: t("why.desc3"),
+            icon: MessageSquare,
+            bg: "bg-indigo-50",
+            stroke: "#4F46E5",
+        },
+    ];
 
     return (
-        <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy-50/50 rounded-full blur-3xl pointer-events-none" />
-
-            <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-14"
-                >
-                    <span className="inline-block px-4 py-1.5 bg-navy-100 text-navy-700 text-sm font-semibold rounded-full mb-4">
-                        Kenapa ScaleUp.Go?
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
-                        Bukan Sekedar{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-500">
-                            Buat Website
+        <section id="why-choose-us" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                {/* Header Standardized */}
+                <div className="text-center mb-16">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4"
+                    >
+                        {t("why.label")}
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4"
+                    >
+                        {t("why.title1")}{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
+                            {t("why.title2")}
                         </span>
-                    </h2>
-                    <p className="mt-4 text-lg text-navy-500 max-w-2xl mx-auto">
-                        Kami memastikan website Anda benar-benar bekerja sebagai mesin penjualan.
-                    </p>
-                </motion.div>
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center"
+                    >
+                        {t("why.desc")}
+                    </motion.p>
+                </div>
 
                 <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
                     {values.map((item, i) => (
@@ -87,8 +94,8 @@ export default function WhyChooseUs() {
                                 <p className="text-accent-500 font-semibold text-sm mb-3">
                                     {item.subtitle}
                                 </p>
-                                <p className="text-navy-500 leading-relaxed text-sm">
-                                    {item.description}
+                                <p className="text-navy-500 text-sm leading-relaxed mb-6 font-medium">
+                                    {item.desc}
                                 </p>
                             </div>
                         </motion.div>

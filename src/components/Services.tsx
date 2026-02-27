@@ -1,74 +1,77 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 import { useRef } from "react";
-import { FileText, Building2, ShoppingCart, ArrowRight } from "lucide-react";
-
-const services = [
-    {
-        icon: FileText,
-        title: "Landing Page",
-        tagline: "Untuk Promosi Spesifik",
-        description:
-            "Halaman yang dirancang khusus untuk mengkonversi pengunjung menjadi leads atau pembeli. Cocok untuk campaign iklan.",
-        features: ["Desain Persuasif", "Mobile Responsive", "Fast Loading", "CTA Optimized"],
-        gradient: "from-accent-400 to-accent-600",
-        iconColor: "text-accent-600",
-        iconBg: "bg-accent-50",
-    },
-    {
-        icon: Building2,
-        title: "Company Profile",
-        tagline: "Untuk Branding Bisnis",
-        description:
-            "Website profesional yang merepresentasikan bisnis Anda secara online. Tingkatkan kredibilitas & kepercayaan pelanggan.",
-        features: ["Multi-halaman", "SEO Optimized", "Kontak Form", "Google Maps"],
-        gradient: "from-navy-700 to-navy-900",
-        iconColor: "text-navy-600",
-        iconBg: "bg-navy-50",
-    },
-    {
-        icon: ShoppingCart,
-        title: "Toko Online",
-        tagline: "Katalog & Checkout",
-        description:
-            "Toko online lengkap dengan sistem katalog, keranjang belanja, dan checkout otomatis via WhatsApp atau Payment.",
-        features: ["Katalog Produk", "Checkout Otomatis", "WhatsApp Order", "Admin Dashboard"],
-        gradient: "from-emerald-500 to-green-600",
-        iconColor: "text-emerald-600",
-        iconBg: "bg-emerald-50",
-    },
-];
+import { Smartphone, Monitor, ArrowRight } from "lucide-react";
 
 export default function Services() {
+    const { t } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    return (
-        <section id="services" className="py-20 sm:py-28 bg-light-bg relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-border to-transparent" />
+    const services = [
+        {
+            title: "Landing Page",
+            tagline: "High Conversion",
+            description: t("services.desc1"),
+            features: ["Sales Focus", "Mobile Ready", "Fast Load"],
+            icon: Smartphone,
+            color: "from-blue-600 to-accent-600",
+            iconBg: "bg-blue-50",
+            iconColor: "text-blue-600",
+            gradient: "from-blue-600/10 to-accent-600/10",
+        },
+        {
+            title: "Company Profile",
+            tagline: "Brand Identity",
+            description: t("services.desc2"),
+            features: ["Professional", "SEO Ready", "Multi Page"],
+            icon: Monitor,
+            color: "from-accent-600 to-indigo-600",
+            iconBg: "bg-accent-50",
+            iconColor: "text-accent-600",
+            gradient: "from-accent-600/10 to-indigo-600/10",
+        },
+    ];
 
-            <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    return (
+        <section id="services" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-light-border to-transparent" />
+
+            <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header Standardized */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
-                        Layanan Kami
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
-                        Solusi Website untuk{" "}
+                <div className="text-center mb-16 px-4">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4"
+                    >
+                        {t("services.label")}
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4"
+                    >
+                        {t("services.title1")}{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            Setiap Kebutuhan
+                            {t("services.title2")}
                         </span>
-                    </h2>
-                    <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed">
-                        Pilih jenis website yang paling sesuai dengan tujuan strategis bisnis Anda.
-                    </p>
-                </motion.div>
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center"
+                    >
+                        {t("services.desc")}
+                    </motion.p>
+                </div>
 
                 <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
                     {services.map((service, i) => (
@@ -78,7 +81,6 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 * i }}
-                            whileHover={{ y: -10 }}
                             className="group"
                         >
                             <div className="relative h-full p-8 sm:p-10 bg-white rounded-[2rem] border border-light-border hover:border-accent-400/30 hover:shadow-2xl hover:shadow-accent-500/10 transition-all duration-500 shadow-sm">
@@ -112,10 +114,15 @@ export default function Services() {
                                         ))}
                                     </div>
 
-                                    <a href="#pricing" className="group/btn inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-accent-600 group-hover:text-white transition-colors duration-500 border-b border-accent-100 group-hover:border-white/20 pb-1">
-                                        Lihat Harga
-                                        <ArrowRight size={14} className="group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                                    </a>
+                                    <div className="pt-6">
+                                        <a
+                                            href="#pricing"
+                                            className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-navy-900 group-hover:text-white transition-colors duration-500"
+                                        >
+                                            {t("services.view_pricing")}
+                                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

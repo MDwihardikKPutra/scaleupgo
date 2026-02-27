@@ -3,31 +3,34 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-    {
-        question: "Berapa lama proses pembuatan website?",
-        answer: "Untuk landing page sekitar 3-5 hari kerja, company profile 5-10 hari kerja, dan toko online 10-14 hari kerja. Timeline bisa lebih cepat tergantung kesiapan konten dari klien.",
-    },
-    {
-        question: "Apakah saya bisa request desain custom?",
-        answer: "Tentu! Semua desain kami custom sesuai brand dan kebutuhan bisnis Anda. Kami akan diskusi detail sebelum mulai desain.",
-    },
-    {
-        question: "Apakah sudah termasuk hosting dan domain?",
-        answer: "Ya! Semua paket sudah termasuk gratis domain .com dan hosting untuk 1 tahun pertama. Perpanjangan selanjutnya dengan harga normal.",
-    },
-    {
-        question: "Bagaimana jika saya ingin ada perubahan setelah website jadi?",
-        answer: "Setiap paket sudah termasuk free revisi. Jika ada perubahan di luar scope, kami akan diskusikan biaya tambahan yang transparan.",
-    },
-    {
-        question: "Apakah website bisa diakses di HP?",
-        answer: "100%! Semua website yang kami buat fully responsive — tampil sempurna di desktop, tablet, maupun smartphone.",
-    },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FAQ() {
+    const { t } = useLanguage();
+
+    const faqs = [
+        {
+            question: t("faq.q1"),
+            answer: t("faq.a1"),
+        },
+        {
+            question: t("faq.q2"),
+            answer: t("faq.a2"),
+        },
+        {
+            question: t("faq.q3"),
+            answer: t("faq.a3"),
+        },
+        {
+            question: t("faq.q4"),
+            answer: t("faq.a4"),
+        },
+        {
+            question: t("faq.q5"),
+            answer: t("faq.a5"),
+        },
+    ];
+
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -45,16 +48,16 @@ export default function FAQ() {
                     className="text-center mb-16"
                 >
                     <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
-                        Customer FAQ
+                        {t("faq.label")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
-                        Yang Sering{" "}
+                        {t("faq.title1")}{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            Ditanyakan
+                            {t("faq.title2")}
                         </span>
                     </h2>
                     <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center">
-                        Segala hal yang perlu Anda ketahui sebelum memulai transformasi digital bersama kami.
+                        {t("faq.desc")}
                     </p>
                 </motion.div>
 

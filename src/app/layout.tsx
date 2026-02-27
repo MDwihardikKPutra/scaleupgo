@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Changa_One } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -35,7 +36,9 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body className={`${plusJakarta.variable} ${changaOne.variable} antialiased font-sans`}>
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Languages } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const navLinks = [
     { label: "Services", href: "#services" },
@@ -12,8 +13,16 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+    const { language, setLanguage, t } = useLanguage();
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    const navLinks = [
+        { label: t("nav.services"), href: "#services" },
+        { label: t("nav.portfolio"), href: "#portfolio" },
+        { label: t("nav.pricing"), href: "#pricing" },
+        { label: t("nav.faq"), href: "#faq" },
+    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -27,8 +36,8 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-light-bg/85 backdrop-blur-xl shadow-lg shadow-navy-900/5 border-b border-light-border"
-                    : "bg-transparent"
+                ? "bg-light-bg/85 backdrop-blur-xl shadow-lg shadow-navy-900/5 border-b border-light-border"
+                : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,17 +65,29 @@ export default function Navbar() {
                                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full`} />
                             </a>
                         ))}
-                        <a
-                            href="https://wa.me/6281234567890"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`ml-2 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transform hover:-translate-y-0.5 transition-all duration-300 ${scrolled
+                        <div className="flex items-center gap-3 ml-2">
+                            <button
+                                onClick={() => setLanguage(language === "id" ? "en" : "id")}
+                                className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all duration-300 text-[9px] font-black uppercase tracking-widest ${scrolled
+                                    ? "border-navy-100 text-navy-600 hover:bg-navy-50"
+                                    : "border-white/20 text-white hover:bg-white/10"
+                                    }`}
+                            >
+                                <Languages size={14} />
+                                {language === "id" ? "ID" : "EN"}
+                            </button>
+                            <a
+                                href="https://wa.me/6281234567890"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transform hover:-translate-y-0.5 transition-all duration-300 shadow-sm ${scrolled
                                     ? "bg-navy-900 text-white hover:bg-navy-950 hover:shadow-xl hover:shadow-navy-900/20"
                                     : "bg-accent-500 text-white hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/25"
-                                }`}
-                        >
-                            Contact Us
-                        </a>
+                                    }`}
+                            >
+                                {t("nav.contact")}
+                            </a>
+                        </div>
                     </div>
 
                     {/* Mobile Toggle */}
@@ -101,14 +122,24 @@ export default function Navbar() {
                                     {link.label}
                                 </a>
                             ))}
-                            <div className="pt-4">
+                            <div className="pt-4 space-y-3">
+                                <button
+                                    onClick={() => {
+                                        setLanguage(language === "id" ? "en" : "id");
+                                        setMobileOpen(false);
+                                    }}
+                                    className="flex items-center justify-center gap-3 w-full py-4.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl border border-accent-100"
+                                >
+                                    <Languages size={16} />
+                                    Switch to {language === "id" ? "English" : "Indonesia"}
+                                </button>
                                 <a
                                     href="https://wa.me/6281234567890"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block w-full py-4.5 bg-navy-900 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl text-center hover:bg-navy-950 active:scale-[0.98] transition-all duration-200"
                                 >
-                                    WhatsApp Us
+                                    {t("nav.contact")}
                                 </a>
                             </div>
                         </div>

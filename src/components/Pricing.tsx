@@ -3,60 +3,63 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, Star } from "lucide-react";
-
-const plans = [
-    {
-        name: "Landing Page",
-        price: "750rb",
-        period: "proyek",
-        description: "Cocok untuk promosi produk, campaign iklan, atau event spesifik.",
-        popular: false,
-        features: [
-            "1 Halaman Responsif",
-            "Desain Custom Modern",
-            "Optimasi Kecepatan",
-            "WhatsApp Integration",
-            "Form Kontak",
-            "Gratis Domain .com",
-            "Free Revisi 2x",
-        ],
-    },
-    {
-        name: "Company Profile",
-        price: "1.5jt",
-        period: "proyek",
-        description: "Website profesional untuk branding dan kredibilitas bisnis Anda.",
-        popular: true,
-        features: [
-            "3-5 Halaman Responsif",
-            "Desain Custom Premium",
-            "SEO On-Page Optimization",
-            "Google Maps Integration",
-            "Blog / Berita",
-            "WhatsApp Chat Widget",
-            "Gratis Domain .com",
-            "Free Revisi 3x",
-        ],
-    },
-    {
-        name: "Toko Online",
-        price: "2.5jt",
-        period: "proyek",
-        description: "Solusi lengkap untuk jualan online dengan katalog & sistem order.",
-        popular: false,
-        features: [
-            "Unlimited Produk",
-            "Katalog Produk Dinamis",
-            "Keranjang & Checkout",
-            "WhatsApp Auto-Order",
-            "Dashboard Admin",
-            "Gratis Domain .com",
-            "Free Revisi 5x",
-        ],
-    },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Pricing() {
+    const { t } = useLanguage();
+
+    const plans = [
+        {
+            name: "Landing Page",
+            price: "750rb",
+            period: t("pricing.period"),
+            description: t("pricing.desc1"),
+            popular: false,
+            features: [
+                "1 Halaman Responsif",
+                "Desain Custom Modern",
+                "Optimasi Kecepatan",
+                "WhatsApp Integration",
+                "Form Kontak",
+                "Gratis Domain .com",
+                "Free Revisi 2x",
+            ],
+        },
+        {
+            name: "Company Profile",
+            price: "1.5jt",
+            period: t("pricing.period"),
+            description: t("pricing.desc2"),
+            popular: true,
+            features: [
+                "3-5 Halaman Responsif",
+                "Desain Custom Premium",
+                "SEO On-Page Optimization",
+                "Google Maps Integration",
+                "Blog / Berita",
+                "WhatsApp Chat Widget",
+                "Gratis Domain .com",
+                "Free Revisi 3x",
+            ],
+        },
+        {
+            name: "Toko Online",
+            price: "2.5jt",
+            period: t("pricing.period"),
+            description: t("pricing.desc3"),
+            popular: false,
+            features: [
+                "Unlimited Produk",
+                "Katalog Produk Dinamis",
+                "Keranjang & Checkout",
+                "WhatsApp Auto-Order",
+                "Dashboard Admin",
+                "Gratis Domain .com",
+                "Free Revisi 5x",
+            ],
+        },
+    ];
+
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -74,16 +77,16 @@ export default function Pricing() {
                     className="text-center mb-16"
                 >
                     <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
-                        Pilihan Paket
+                        {t("pricing.label")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
-                        Harga{" "}
+                        {t("pricing.title1")}{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            Transparan
+                            {t("pricing.title2")}
                         </span>
                     </h2>
                     <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed">
-                        Pilih paket investasi yang paling sesuai dengan target pertumbuhan bisnis Anda.
+                        {t("pricing.desc")}
                     </p>
                 </motion.div>
 
@@ -107,7 +110,7 @@ export default function Pricing() {
                                 >
                                     <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-500 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-accent-500/30 animate-bounce-subtle">
                                         <Star size={10} fill="currentColor" />
-                                        Most Popular
+                                        {t("pricing.popular")}
                                     </div>
                                 </motion.div>
                             )}
@@ -121,7 +124,7 @@ export default function Pricing() {
 
                                 <div className="flex items-baseline gap-1 mb-8">
                                     <div className="flex flex-col">
-                                        <span className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">Mulai Dari</span>
+                                        <span className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">{t("pricing.starting")}</span>
                                         <div className="flex items-baseline gap-1">
                                             <span className="text-3xl sm:text-4xl font-black text-navy-900 tracking-tighter">Rp {plan.price}</span>
                                             <span className="text-navy-400 text-xs font-bold font-mono">/{plan.period}</span>
@@ -149,7 +152,7 @@ export default function Pricing() {
                                         : "bg-navy-900 text-white hover:bg-navy-800 hover:shadow-xl shadow-navy-900/10"
                                         }`}
                                 >
-                                    Pesan Sekarang
+                                    {t("pricing.cta")}
                                 </a>
                             </div>
                         </motion.div>

@@ -4,39 +4,39 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-
-const projects = [
-    {
-        title: "Oceanus Energy",
-        category: "Company Profile",
-        description:
-            "Website company profile premium untuk perusahaan energi offshore dengan desain corporate modern, animasi dinamis, dan halaman sustainability.",
-        image: "/oceanusenergy.png",
-        tags: ["Corporate", "Animasi", "Multi-Page"],
-        href: "https://oceanusenergy.vercel.app/",
-    },
-    {
-        title: "Brewhouse",
-        category: "Landing Page",
-        description:
-            "Website premium untuk coffee shop & brewery dengan desain modern, layout estetik, dan navigasi yang halus.",
-        image: "/brewhouse.png",
-        tags: ["Coffee Shop", "Premium", "Responsive"],
-        href: "https://brewhouse-rho.vercel.app/",
-    },
-    {
-        title: "Luxe Fashion",
-        category: "Landing Page",
-        description:
-            "Landing page eksklusif untuk brand fashion dengan layout estetik, galeri koleksi premium, dan navigasi yang halus.",
-        image: "/Fashion.png",
-        tags: ["Fashion", "Visual", "Responsive"],
-        href: "https://fashion-landingpage-five.vercel.app/",
-        imageClassName: "object-top",
-    },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Portfolio() {
+    const { t } = useLanguage();
+
+    const projects = [
+        {
+            title: "Oceanus Energy",
+            category: "Company Profile",
+            description: t("portfolio.desc1"),
+            image: "/oceanusenergy.png",
+            tags: ["Corporate", "Animasi", "Multi-Page"],
+            href: "https://oceanusenergy.vercel.app/",
+        },
+        {
+            title: "Brewhouse",
+            category: "Landing Page",
+            description: t("portfolio.desc2"),
+            image: "/brewhouse.png",
+            tags: ["Coffee Shop", "Premium", "Responsive"],
+            href: "https://brewhouse-rho.vercel.app/",
+        },
+        {
+            title: "Luxe Fashion",
+            category: "Landing Page",
+            description: t("portfolio.desc3"),
+            image: "/Fashion.png",
+            tags: ["Fashion", "Visual", "Responsive"],
+            href: "https://fashion-landingpage-five.vercel.app/",
+            imageClassName: "object-top",
+        },
+    ];
+
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -53,13 +53,13 @@ export default function Portfolio() {
                     className="text-center mb-16"
                 >
                     <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
-                        Showcase Karya
+                        {t("portfolio.label")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
-                        Portofolio
+                        {t("portfolio.title")}
                     </h2>
                     <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed">
-                        Beberapa proyek pilihan yang sudah kami selesaikan dengan standar kualitas premium.
+                        {t("portfolio.desc")}
                     </p>
                 </motion.div>
 

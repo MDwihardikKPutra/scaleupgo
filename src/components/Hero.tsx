@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Monitor, Smartphone, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+    const { t } = useLanguage();
+
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg pt-20 lg:pt-0">
             {/* Background Decorations */}
@@ -28,7 +31,7 @@ export default function Hero() {
                             className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-accent-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8"
                         >
                             <span className="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse" />
-                            Web Agency for Success
+                            {t("hero.agency")}
                         </motion.div>
 
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tighter">
@@ -38,7 +41,7 @@ export default function Hero() {
                                 transition={{ delay: 0.3, duration: 0.8 }}
                                 className="block"
                             >
-                                Scale Up
+                                {t("hero.title1")}
                             </motion.span>
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
@@ -46,7 +49,7 @@ export default function Hero() {
                                 transition={{ delay: 0.4, duration: 0.8 }}
                                 className="block"
                             >
-                                Your Business,
+                                {t("hero.title2")}
                             </motion.span>
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
@@ -54,7 +57,7 @@ export default function Hero() {
                                 transition={{ delay: 0.5, duration: 0.8 }}
                                 className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600 block"
                             >
-                                Go Digital.
+                                {t("hero.title3")}
                             </motion.span>
                         </h1>
 
@@ -64,8 +67,7 @@ export default function Hero() {
                             transition={{ delay: 0.4, duration: 0.6 }}
                             className="mt-6 text-base sm:text-lg text-white/60 leading-relaxed max-w-xl font-medium"
                         >
-                            Ubah followers jadi pembeli. Stop cara manual, biarkan website
-                            bekerja <span className="font-bold text-white/90 underline underline-offset-4 decoration-accent-500/50">24 jam</span> untuk bisnis Anda.
+                            {t("hero.desc")}
                         </motion.p>
 
                         <motion.div
@@ -78,16 +80,16 @@ export default function Hero() {
                                 href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-black text-sm rounded-2xl hover:bg-accent-600 hover:shadow-2xl hover:shadow-accent-500/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
+                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-black text-sm rounded-2xl hover:bg-accent-600 hover:shadow-2xl hover:shadow-accent-500/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 shadow-lg shadow-accent-500/20"
                             >
-                                Buat Website Sekarang
+                                {t("hero.cta")}
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </a>
                             <a
                                 href="#services"
                                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white font-bold text-sm rounded-2xl border border-white/15 backdrop-blur-md hover:bg-white/10 hover:border-white/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
                             >
-                                Lihat Layanan
+                                {t("hero.secondary")}
                             </a>
                         </motion.div>
 
@@ -99,8 +101,8 @@ export default function Hero() {
                             className="mt-12 flex flex-wrap items-center gap-8"
                         >
                             {[
-                                { label: "50+ Website", sub: "Selesai Dibuat" },
-                                { label: "Trusted Agency", sub: "Client Nasional" },
+                                { label: t("hero.trust1"), sub: t("hero.sub1") },
+                                { label: t("hero.trust2"), sub: t("hero.sub2") },
                             ].map((indicator, i) => (
                                 <motion.div
                                     key={i}
