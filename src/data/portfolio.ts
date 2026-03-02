@@ -7,6 +7,7 @@ export interface Project {
     href: string;
     price: string;
     imageClassName?: string;
+    isPlaceholder?: boolean;
 }
 
 export const projects: Project[] = [
@@ -38,6 +39,17 @@ export const projects: Project[] = [
         price: "Rp 1.500.000",
         imageClassName: "object-top",
     },
+    // Dummy Placeholders
+    ...Array.from({ length: 20 }).map((_, i) => ({
+        title: `Premium Template ${i + 1}`,
+        category: i % 3 === 0 ? "Landing Page" : i % 3 === 1 ? "Company Profile" : "E-commerce",
+        descriptionKey: "portfolio.dummy_desc",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+        tagKeys: ["portfolio.tag_prem", "portfolio.tag_resp"],
+        href: "#",
+        price: "Rp ???",
+        isPlaceholder: true,
+    })),
 ];
 
 export const categories = ["All", "Landing Page", "Company Profile", "E-commerce"];

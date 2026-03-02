@@ -64,6 +64,16 @@ export default function Portfolio() {
                                                 }`}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                        {project.isPlaceholder && (
+                                            <div className="absolute top-6 right-6 z-30">
+                                                <div className="relative flex items-center justify-center">
+                                                    <div className="absolute w-3 h-3 bg-red-500 rounded-full opacity-75 animate-ping" />
+                                                    <div className="relative w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                                             <div className="w-11 h-11 bg-white/20 backdrop-blur-md border border-white/20 shadow-xl rounded-full flex items-center justify-center">
                                                 <ExternalLink size={18} className="text-white" />

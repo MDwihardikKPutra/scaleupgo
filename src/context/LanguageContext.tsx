@@ -75,6 +75,8 @@ export const translations: Record<Language, Record<string, string>> = {
         "portfolio.desc1": "Website company profile premium untuk perusahaan energi offshore dengan desain corporate modern, animasi dinamis, dan halaman sustainability.",
         "portfolio.desc2": "Website premium untuk coffee shop & brewery dengan desain modern, layout estetik, dan navigasi yang halus.",
         "portfolio.desc3": "Landing page eksklusif untuk brand fashion dengan layout estetik, galeri koleksi premium, dan navigasi yang halus.",
+        "portfolio.dummy_title": "Proyek Placeholder",
+        "portfolio.dummy_desc": "Template website premium ini sedang dalam tahap pengembangan dan akan segera tersedia.",
 
         // Pricing
         "pricing.label": "Pilihan Paket",
@@ -198,6 +200,8 @@ export const translations: Record<Language, Record<string, string>> = {
         "portfolio.desc1": "Premium company profile website for offshore energy company with modern corporate design, dynamic animations, and sustainability page.",
         "portfolio.desc2": "Premium website for coffee shop & brewery with modern design, aesthetic layout, and smooth navigation.",
         "portfolio.desc3": "Exclusive landing page for fashion brands with aesthetic layout, premium collection gallery, and smooth navigation.",
+        "portfolio.dummy_title": "Project Placeholder",
+        "portfolio.dummy_desc": "This premium website template is currently under development and will be available soon.",
         "portfolio.tag_corp": "Corporate",
         "portfolio.tag_anim": "Animation",
         "portfolio.tag_multi": "Multi-Page",

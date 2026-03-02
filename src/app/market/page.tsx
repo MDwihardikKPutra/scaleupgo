@@ -9,12 +9,17 @@ import { projects, categories, Project } from "@/data/portfolio";
 import Navbar from "@/components/Navbar";
 import FinalCTA from "@/components/FinalCTA";
 
+const ITEMS_PER_PAGE = 9;
+
 export default function MarketPage() {
     const { t, language } = useLanguage();
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
+    const [currentPage, setCurrentPage] = useState(1);
 
     const filteredProjects = useMemo(() => {
+        // Reset to page 1 when filters change
+        setCurrentPage(1);
         return projects.filter((project) => {
             const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 project.tagKeys.some(tagKey => t(tagKey).toLowerCase().includes(searchQuery.toLowerCase()));
@@ -22,6 +27,21 @@ export default function MarketPage() {
             return matchesSearch && matchesCategory;
         });
     }, [searchQuery, activeCategory, t]);
+
+    const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+    const paginatedProjects = filteredProjects.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        const contentSection = document.getElementById("market-content");
+        if (contentSection) {
+            const offset = contentSection.offsetTop - 100;
+            window.scrollTo({ top: offset, behavior: "smooth" });
+        }
+    };
 
     const handleBuy = (project: Project) => {
         const message = language === "id"
@@ -66,7 +86,7 @@ export default function MarketPage() {
             </section>
 
             {/* Market Content */}
-            <section className="py-12 sm:py-20 -mt-8 relative z-20">
+            <section id="market-content" className="py-12 sm:py-20 -mt-8 relative z-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Controls */}
@@ -105,14 +125,14 @@ export default function MarketPage() {
                     {/* Grid */}
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <AnimatePresence mode="popLayout">
-                            {filteredProjects.map((project, i) => (
+                            {paginatedProjects.map((project, i) => (
                                 <motion.div
                                     key={project.title}
                                     layout
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                                    transition={{ duration: 0.4, delay: (i % ITEMS_PER_PAGE) * 0.05 }}
                                     whileHover={{ y: -12 }}
                                     className="group"
                                 >
@@ -132,6 +152,15 @@ export default function MarketPage() {
                                                     {project.category}
                                                 </span>
                                             </div>
+
+                                            {project.isPlaceholder && (
+                                                <div className="absolute top-6 right-6 z-30">
+                                                    <div className="relative flex items-center justify-center">
+                                                        <div className="absolute w-3 h-3 bg-red-500 rounded-full opacity-75 animate-ping" />
+                                                        <div className="relative w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                                                    </div>
+                                                </div>
+                                            )}
 
                                             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
                                                 <div className="text-white">
@@ -178,6 +207,40 @@ export default function MarketPage() {
                             ))}
                         </AnimatePresence>
                     </div>
+
+                    {/* Pagination Controls */}
+                    {totalPages > 1 && (
+                        <div className="mt-16 flex justify-center items-center gap-3">
+                            <button
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white border border-light-border text-navy-400 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent-500 hover:text-accent-500 transition-all duration-300 shadow-sm"
+                            >
+                                <ArrowRight className="rotate-180" size={20} />
+                            </button>
+
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                <button
+                                    key={page}
+                                    onClick={() => handlePageChange(page)}
+                                    className={`w-12 h-12 rounded-2xl text-[10px] font-black tracking-wider transition-all duration-300 ${currentPage === page
+                                        ? "bg-navy-900 text-white shadow-xl shadow-navy-900/20"
+                                        : "bg-white text-navy-500 border border-light-border hover:border-accent-500 hover:text-accent-500 shadow-sm"
+                                        }`}
+                                >
+                                    {page}
+                                </button>
+                            ))}
+
+                            <button
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                                className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white border border-light-border text-navy-400 disabled:opacity-30 disabled:cursor-not-allowed hover:border-accent-500 hover:text-accent-500 transition-all duration-300 shadow-sm"
+                            >
+                                <ArrowRight size={20} />
+                            </button>
+                        </div>
+                    )}
 
                     {/* Empty State */}
                     {filteredProjects.length === 0 && (

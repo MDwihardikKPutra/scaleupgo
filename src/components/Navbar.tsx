@@ -21,6 +21,7 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === "/";
+    const isDarkHeroPage = pathname === "/" || pathname === "/market";
 
     const navLinks = [
         { label: t("nav.market"), href: "/market" },
@@ -49,10 +50,10 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo Standardized Size */}
                     <Link href="/" className="flex items-center group">
-                        <span className={`text-xl lg:text-2xl tracking-tighter transition-colors duration-500 ${scrolled || !isHome ? "text-navy-900" : "text-white"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
+                        <span className={`text-xl lg:text-2xl tracking-tighter transition-colors duration-500 ${scrolled || !isDarkHeroPage ? "text-navy-900" : "text-white"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
                             ScaleUp
                         </span>
-                        <span className={`text-xl lg:text-2xl transition-colors duration-500 ${scrolled || !isHome ? "text-accent-500" : "text-accent-400"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
+                        <span className={`text-xl lg:text-2xl transition-colors duration-500 ${scrolled || !isDarkHeroPage ? "text-accent-500" : "text-accent-400"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
                             .Go
                         </span>
                     </Link>
@@ -63,7 +64,7 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 relative group flex items-center gap-2 py-2 ${scrolled || !isHome ? "text-navy-800 hover:text-accent-500" : "text-white/80 hover:text-white"
+                                className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 relative group flex items-center gap-2 py-2 ${scrolled || !isDarkHeroPage ? "text-navy-800 hover:text-accent-500" : "text-white/80 hover:text-white"
                                     }`}
                             >
                                 {link.href === "/market" && <ShoppingBag size={12} className="transition-transform duration-300 group-hover:scale-110" />}
