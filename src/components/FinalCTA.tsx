@@ -42,7 +42,7 @@ export default function FinalCTA() {
 
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4">
                             <a
-                                href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
+                                href={`https://wa.me/6281234567890?text=${encodeURIComponent(t("cta.wa_message"))}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-navy-950 font-black text-sm rounded-2xl hover:bg-accent-50 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
@@ -75,7 +75,7 @@ export default function FinalCTA() {
                                 </span>
                             </div>
                             <p className="text-white/40 text-xs font-bold tracking-tight text-center md:text-left">
-                                Scale Up Your Business, Go Digital.
+                                {t("footer.tagline")}
                             </p>
                         </div>
 
@@ -97,7 +97,7 @@ export default function FinalCTA() {
                                 ))}
                             </div>
                             <p className="text-white/20 text-[9px] font-black tracking-[0.3em] uppercase mt-2">
-                                {t("cta.rights")}
+                                {t("footer.rights")}
                             </p>
                         </div>
                     </div>

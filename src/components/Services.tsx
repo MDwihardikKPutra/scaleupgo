@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useRef } from "react";
-import { Smartphone, Monitor, ArrowRight } from "lucide-react";
+import { Smartphone, Monitor, ArrowRight, ShoppingBag } from "lucide-react";
 
 export default function Services() {
     const { t } = useLanguage();
@@ -12,26 +12,37 @@ export default function Services() {
 
     const services = [
         {
-            title: "Landing Page",
-            tagline: "High Conversion",
+            title: t("services.type1"),
+            tagline: t("services.tagline1"),
             description: t("services.desc1"),
-            features: ["Sales Focus", "Mobile Ready", "Fast Load"],
+            features: [t("services.feat1_1"), t("services.feat1_2"), t("services.feat1_3")],
             icon: Smartphone,
             color: "from-blue-600 to-accent-600",
             iconBg: "bg-blue-50",
             iconColor: "text-blue-600",
-            gradient: "from-blue-600/10 to-accent-600/10",
+            gradient: "from-blue-600 to-accent-600",
         },
         {
-            title: "Company Profile",
-            tagline: "Brand Identity",
+            title: t("services.type2"),
+            tagline: t("services.tagline2"),
             description: t("services.desc2"),
-            features: ["Professional", "SEO Ready", "Multi Page"],
+            features: [t("services.feat2_1"), t("services.feat2_2"), t("services.feat2_3")],
             icon: Monitor,
             color: "from-accent-600 to-indigo-600",
             iconBg: "bg-accent-50",
             iconColor: "text-accent-600",
-            gradient: "from-accent-600/10 to-indigo-600/10",
+            gradient: "from-accent-600 to-indigo-600",
+        },
+        {
+            title: t("services.type3"),
+            tagline: t("services.tagline3"),
+            description: t("services.desc3"),
+            features: [t("services.feat3_1"), t("services.feat3_2"), t("services.feat3_3")],
+            icon: ShoppingBag,
+            color: "from-indigo-600 to-blue-600",
+            iconBg: "bg-indigo-50",
+            iconColor: "text-indigo-600",
+            gradient: "from-indigo-600 to-blue-600",
         },
     ];
 

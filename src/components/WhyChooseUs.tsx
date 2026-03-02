@@ -9,24 +9,24 @@ export default function WhyChooseUs() {
 
     const values = [
         {
-            title: "Desain Premium",
-            subtitle: "Visual Excellence",
+            title: t("why.val1_title"),
+            subtitle: t("why.val1_sub"),
             desc: t("why.desc1"),
             icon: Target,
             bg: "bg-blue-50",
             stroke: "#2563EB",
         },
         {
-            title: "Konversi Tinggi",
-            subtitle: "ROI Oriented",
+            title: t("why.val2_title"),
+            subtitle: t("why.val2_sub"),
             desc: t("why.desc2"),
             icon: Zap,
             bg: "bg-accent-50",
             stroke: "#3B82F6",
         },
         {
-            title: "Support 24/7",
-            subtitle: "Reliable Partner",
+            title: t("why.val3_title"),
+            subtitle: t("why.val3_sub"),
             desc: t("why.desc3"),
             icon: MessageSquare,
             bg: "bg-indigo-50",
@@ -78,11 +78,11 @@ export default function WhyChooseUs() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 * i }}
-                            whileHover={{ y: -5 }}
+                            whileHover={{ y: -8 }}
                             className="group relative"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-navy-50 to-white rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <div className="relative p-8 sm:p-10 rounded-3xl border border-navy-100 hover:border-navy-200 hover:shadow-xl hover:shadow-navy-900/5 transition-all duration-300 bg-white">
+                            <div className="relative p-8 sm:p-10 rounded-3xl border border-navy-100 group-hover:border-accent-400 group-hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.08)] transition-all duration-500 bg-white overflow-hidden h-full">
+                                <div className="absolute inset-0 bg-gradient-to-br from-accent-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div
                                     className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm`}
                                 >

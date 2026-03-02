@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Languages } from "lucide-react";
+import { Menu, X, Languages, ShoppingBag } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { projects } from "@/data/portfolio";
 
 const navLinks = [
     { label: "Services", href: "#services" },
@@ -16,12 +19,14 @@ export default function Navbar() {
     const { language, setLanguage, t } = useLanguage();
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const pathname = usePathname();
+    const isHome = pathname === "/";
 
     const navLinks = [
-        { label: t("nav.services"), href: "#services" },
-        { label: t("nav.portfolio"), href: "#portfolio" },
-        { label: t("nav.pricing"), href: "#pricing" },
-        { label: t("nav.faq"), href: "#faq" },
+        { label: t("nav.market"), href: "/market" },
+        { label: t("nav.services"), href: isHome ? "#services" : "/#services" },
+        { label: t("nav.portfolio"), href: isHome ? "#portfolio" : "/#portfolio" },
+        { label: t("nav.pricing"), href: isHome ? "#pricing" : "/#pricing" },
     ];
 
     useEffect(() => {
@@ -43,27 +48,28 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo Standardized Size */}
-                    <a href="#" className="flex items-center group">
-                        <span className={`text-xl lg:text-2xl tracking-tighter transition-colors duration-500 ${scrolled ? "text-navy-900" : "text-white"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
+                    <Link href="/" className="flex items-center group">
+                        <span className={`text-xl lg:text-2xl tracking-tighter transition-colors duration-500 ${scrolled || !isHome ? "text-navy-900" : "text-white"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
                             ScaleUp
                         </span>
-                        <span className={`text-xl lg:text-2xl transition-colors duration-500 ${scrolled ? "text-accent-500" : "text-accent-400"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
+                        <span className={`text-xl lg:text-2xl transition-colors duration-500 ${scrolled || !isHome ? "text-accent-500" : "text-accent-400"}`} style={{ fontFamily: "var(--font-changa-one)" }}>
                             .Go
                         </span>
-                    </a>
+                    </Link>
 
                     {/* Desktop Nav - Balanced Tracking */}
                     <div className="hidden md:flex items-center gap-10">
                         {navLinks.map((link) => (
-                            <a
+                            <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-300 relative group ${scrolled ? "text-navy-800 hover:text-accent-500" : "text-white/80 hover:text-white"
+                                className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 relative group flex items-center gap-2 py-2 ${scrolled || !isHome ? "text-navy-800 hover:text-accent-500" : "text-white/80 hover:text-white"
                                     }`}
                             >
+                                {link.href === "/market" && <ShoppingBag size={12} className="transition-transform duration-300 group-hover:scale-110" />}
                                 {link.label}
-                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full`} />
-                            </a>
+                                <span className={`absolute bottom-0 left-0 h-0.5 bg-accent-500 transition-all duration-500 ease-out ${pathname === link.href ? "w-full" : "w-0 group-hover:w-full"}`} />
+                            </Link>
                         ))}
                         <div className="flex items-center gap-3 ml-2">
                             <button
@@ -113,14 +119,16 @@ export default function Navbar() {
                     >
                         <div className="px-6 py-8 space-y-2">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="block py-4 px-5 text-[10px] font-black uppercase tracking-[0.2em] text-navy-800 hover:text-accent-600 hover:bg-accent-50 rounded-2xl transition-all duration-200"
+                                    className={`flex items-center gap-3 py-4 px-5 text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all duration-200 ${pathname === link.href ? "bg-accent-50 text-accent-600" : "text-navy-800 hover:bg-navy-50"
+                                        }`}
                                 >
+                                    {link.href === "/market" && <ShoppingBag size={14} className="text-accent-500" />}
                                     {link.label}
-                                </a>
+                                </Link>
                             ))}
                             <div className="pt-4 space-y-3">
                                 <button

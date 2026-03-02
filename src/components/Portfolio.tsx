@@ -5,37 +5,10 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { projects } from "@/data/portfolio";
 
 export default function Portfolio() {
     const { t } = useLanguage();
-
-    const projects = [
-        {
-            title: "Oceanus Energy",
-            category: "Company Profile",
-            description: t("portfolio.desc1"),
-            image: "/oceanusenergy.png",
-            tags: ["Corporate", "Animasi", "Multi-Page"],
-            href: "https://oceanusenergy.vercel.app/",
-        },
-        {
-            title: "Brewhouse",
-            category: "Landing Page",
-            description: t("portfolio.desc2"),
-            image: "/brewhouse.png",
-            tags: ["Coffee Shop", "Premium", "Responsive"],
-            href: "https://brewhouse-rho.vercel.app/",
-        },
-        {
-            title: "Luxe Fashion",
-            category: "Landing Page",
-            description: t("portfolio.desc3"),
-            image: "/Fashion.png",
-            tags: ["Fashion", "Visual", "Responsive"],
-            href: "https://fashion-landingpage-five.vercel.app/",
-            imageClassName: "object-top",
-        },
-    ];
 
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -80,7 +53,7 @@ export default function Portfolio() {
                                 rel={project.href !== "#" ? "noopener noreferrer" : undefined}
                                 className="block"
                             >
-                                <div className="relative rounded-[2rem] overflow-hidden border border-light-border hover:border-accent-500/30 hover:shadow-2xl hover:shadow-accent-500/5 transition-all duration-500 bg-white">
+                                <div className="relative rounded-[2rem] overflow-hidden border border-light-border group-hover:border-accent-500/30 group-hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.08)] transition-all duration-500 bg-white">
                                     {/* Image */}
                                     <div className="relative h-60 overflow-hidden">
                                         <Image
@@ -90,10 +63,10 @@ export default function Portfolio() {
                                             className={`object-cover transition-transform duration-700 group-hover:scale-105 ${project.imageClassName || "object-top"
                                                 }`}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                            <div className="w-9 h-9 bg-white shadow-xl rounded-full flex items-center justify-center">
-                                                <ExternalLink size={14} className="text-navy-900" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                            <div className="w-11 h-11 bg-white/20 backdrop-blur-md border border-white/20 shadow-xl rounded-full flex items-center justify-center">
+                                                <ExternalLink size={18} className="text-white" />
                                             </div>
                                         </div>
                                     </div>
@@ -108,16 +81,16 @@ export default function Portfolio() {
                                         <h3 className="text-lg font-bold text-navy-900 mb-2 group-hover:text-accent-600 transition-colors tracking-tight">
                                             {project.title}
                                         </h3>
-                                        <p className="text-navy-500 text-sm leading-relaxed mb-6 line-clamp-2 min-h-[2.5rem] font-medium">
-                                            {project.description}
+                                        <p className="text-navy-500 text-sm leading-relaxed mb-6 line-clamp-2 min-h-[2.5rem] font-medium group-hover:text-navy-700 transition-colors">
+                                            {t(project.descriptionKey)}
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags.map((tag, j) => (
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {project.tagKeys.map((tagKey, idx) => (
                                                 <span
-                                                    key={j}
-                                                    className="px-2.5 py-1 bg-light-surface text-navy-500 text-[9px] font-bold rounded-md border border-light-border uppercase tracking-wide"
+                                                    key={idx}
+                                                    className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[9px] font-black uppercase tracking-widest text-white/90"
                                                 >
-                                                    {tag}
+                                                    {t(tagKey)}
                                                 </span>
                                             ))}
                                         </div>
