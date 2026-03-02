@@ -6,98 +6,71 @@ import { Target, Zap, MessageSquare } from "lucide-react";
 
 export default function WhyChooseUs() {
     const { t } = useLanguage();
+    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
     const values = [
-        {
-            title: t("why.val1_title"),
-            subtitle: t("why.val1_sub"),
-            desc: t("why.desc1"),
-            icon: Target,
-            bg: "bg-blue-50",
-            stroke: "#2563EB",
-        },
-        {
-            title: t("why.val2_title"),
-            subtitle: t("why.val2_sub"),
-            desc: t("why.desc2"),
-            icon: Zap,
-            bg: "bg-accent-50",
-            stroke: "#3B82F6",
-        },
-        {
-            title: t("why.val3_title"),
-            subtitle: t("why.val3_sub"),
-            desc: t("why.desc3"),
-            icon: MessageSquare,
-            bg: "bg-indigo-50",
-            stroke: "#4F46E5",
-        },
+        { title: t("why.val1_title"), subtitle: t("why.val1_sub"), desc: t("why.desc1"), icon: Target },
+        { title: t("why.val2_title"), subtitle: t("why.val2_sub"), desc: t("why.desc2"), icon: Zap },
+        { title: t("why.val3_title"), subtitle: t("why.val3_sub"), desc: t("why.desc3"), icon: MessageSquare },
     ];
 
     return (
-        <section id="why-choose-us" className="py-20 sm:py-28 bg-white relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Header Standardized */}
+        <section id="why-choose-us" className="min-h-screen flex items-center bg-[#01040D] border-t border-white/[0.06]">
+            <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 py-16">
+                {/* Header */}
                 <div className="text-center mb-16">
                     <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4"
+                        className="text-accent-400 text-[11px] font-mono font-bold uppercase tracking-[0.3em]"
                     >
                         {t("why.label")}
                     </motion.span>
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 14 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4"
+                        transition={{ duration: 0.7, ease }}
+                        className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em]"
                     >
                         {t("why.title1")}{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            {t("why.title2")}
-                        </span>
+                        <span className="text-accent-400 italic font-light">{t("why.title2")}</span>
                     </motion.h2>
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center"
+                        transition={{ duration: 0.7, delay: 0.15, ease }}
+                        className="mt-5 text-white/40 text-lg max-w-xl mx-auto"
                     >
                         {t("why.desc")}
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+                {/* Cards — taller */}
+                <div className="grid md:grid-cols-3 gap-5">
                     {values.map((item, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.1 * i }}
-                            whileHover={{ y: -8 }}
-                            className="group relative"
+                            transition={{ duration: 0.6, ease, delay: 0.08 * i }}
+                            className="group flex flex-col p-9 rounded-2xl bg-white/[0.04] border border-white/[0.07] hover:border-white/12 transition-colors duration-500 min-h-[280px]"
                         >
-                            <div className="relative p-8 sm:p-10 rounded-3xl border border-navy-100 group-hover:border-accent-400 group-hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.08)] transition-all duration-500 bg-white overflow-hidden h-full">
-                                <div className="absolute inset-0 bg-gradient-to-br from-accent-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div
-                                    className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm`}
-                                >
-                                    <item.icon size={26} style={{ stroke: item.stroke }} className="group-hover:scale-110 transition-transform duration-300" />
-                                </div>
-                                <h3 className="text-xl font-bold text-navy-900 mb-1">
-                                    {item.title}
-                                </h3>
-                                <p className="text-accent-500 font-semibold text-sm mb-3">
-                                    {item.subtitle}
-                                </p>
-                                <p className="text-navy-500 text-sm leading-relaxed mb-6 font-medium">
-                                    {item.desc}
-                                </p>
+                            <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center mb-8">
+                                <item.icon size={22} className="text-accent-400" />
                             </div>
+                            <h3 className="text-2xl font-bold text-white tracking-tight mb-2">
+                                {item.title}
+                            </h3>
+                            <p className="text-accent-400 font-mono text-[9px] uppercase tracking-[0.25em] font-bold mb-5 opacity-60">
+                                {item.subtitle}
+                            </p>
+                            <p className="text-white/35 text-base leading-relaxed flex-1">
+                                {item.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>

@@ -34,6 +34,12 @@
   --color-light-border: #e9ecef;
 
   --font-sans: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "DM Serif Display", serif;
+  --font-mono: "Space Mono", monospace;
+
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
   --animate-bounce-subtle: bounce-subtle 2s infinite ease-in-out;
 

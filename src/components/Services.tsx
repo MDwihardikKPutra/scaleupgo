@@ -3,140 +3,114 @@
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useRef } from "react";
-import { Smartphone, Monitor, ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Services() {
     const { t } = useLanguage();
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-80px" });
+    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
     const services = [
         {
+            num: "01",
+            tag: t("services.tagline1"),
             title: t("services.type1"),
-            tagline: t("services.tagline1"),
-            description: t("services.desc1"),
+            desc: t("services.desc1"),
             features: [t("services.feat1_1"), t("services.feat1_2"), t("services.feat1_3")],
-            icon: Smartphone,
-            color: "from-blue-600 to-accent-600",
-            iconBg: "bg-blue-50",
-            iconColor: "text-blue-600",
-            gradient: "from-blue-600 to-accent-600",
         },
         {
+            num: "02",
+            tag: t("services.tagline2"),
             title: t("services.type2"),
-            tagline: t("services.tagline2"),
-            description: t("services.desc2"),
+            desc: t("services.desc2"),
             features: [t("services.feat2_1"), t("services.feat2_2"), t("services.feat2_3")],
-            icon: Monitor,
-            color: "from-accent-600 to-indigo-600",
-            iconBg: "bg-accent-50",
-            iconColor: "text-accent-600",
-            gradient: "from-accent-600 to-indigo-600",
         },
         {
+            num: "03",
+            tag: t("services.tagline3") || "Hot",
             title: t("services.type3"),
-            tagline: t("services.tagline3"),
-            description: t("services.desc3"),
+            desc: t("services.desc3"),
             features: [t("services.feat3_1"), t("services.feat3_2"), t("services.feat3_3")],
-            icon: ShoppingBag,
-            color: "from-indigo-600 to-blue-600",
-            iconBg: "bg-indigo-50",
-            iconColor: "text-indigo-600",
-            gradient: "from-indigo-600 to-blue-600",
         },
     ];
 
     return (
-        <section id="services" className="py-20 sm:py-28 bg-white relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-light-border to-transparent" />
+        <section id="services" className="min-h-screen flex items-center bg-[#01040D]">
+            <div ref={ref} className="w-full max-w-6xl mx-auto px-6 lg:px-8 py-16">
 
-            <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Header Standardized */}
-                <div className="text-center mb-16 px-4">
+                {/* Header — inline, no wrap */}
+                <div className="mb-16 pb-8 border-b border-white/[0.07]">
                     <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4"
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.5 }}
+                        className="block text-accent-400 text-[10px] font-mono font-bold uppercase tracking-[0.3em] mb-3"
                     >
                         {t("services.label")}
                     </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4"
-                    >
-                        {t("services.title1")}{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            {t("services.title2")}
-                        </span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed text-center"
-                    >
-                        {t("services.desc")}
-                    </motion.p>
+                    <div className="flex items-end justify-between gap-8">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, ease }}
+                            className="text-4xl sm:text-5xl font-bold text-white tracking-[-0.03em] whitespace-nowrap"
+                        >
+                            {t("services.title1")}{" "}
+                            <span className="text-accent-400 italic font-light">{t("services.title2")}</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="hidden lg:block text-white/30 text-sm max-w-xs text-right leading-relaxed shrink-0"
+                        >
+                            {t("services.desc")}
+                        </motion.p>
+                    </div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
-                    {services.map((service, i) => (
-                        <motion.div
+                {/* Service rows */}
+                <div className="divide-y divide-white/[0.06]">
+                    {services.map((svc, i) => (
+                        <motion.a
                             key={i}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.1 * i }}
-                            className="group"
+                            href="#pricing"
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.5, ease, delay: 0.1 + 0.08 * i }}
+                            className="group flex items-center gap-8 py-7 hover:bg-white/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-300"
                         >
-                            <div className="relative h-full p-8 sm:p-10 bg-white rounded-[2rem] border border-light-border hover:border-accent-400/30 hover:shadow-2xl hover:shadow-accent-500/10 transition-all duration-500 shadow-sm">
-                                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]`} />
+                            {/* Number */}
+                            <span className="text-white/15 text-xs font-mono w-6 shrink-0">{svc.num}</span>
 
-                                <div className="relative z-10">
-                                    <div className={`w-12 h-12 rounded-2xl ${service.iconBg} group-hover:bg-white/20 flex items-center justify-center mb-8 transition-all duration-500 shadow-sm border border-light-border/50 group-hover:border-transparent group-hover:rotate-[10deg]`}>
-                                        <service.icon size={22} className={`${service.iconColor} group-hover:text-white transition-all duration-500`} />
-                                    </div>
-
-                                    <h3 className="text-xl sm:text-2xl font-black text-navy-900 group-hover:text-white transition-colors duration-500 mb-1 tracking-tight">
-                                        {service.title}
-                                    </h3>
-                                    <p className={`text-[9px] font-black uppercase tracking-widest mb-4 ${service.iconColor} group-hover:text-white/70 transition-colors duration-500`}>
-                                        {service.tagline}
-                                    </p>
-                                    <p className="text-navy-500 text-sm leading-relaxed mb-8 group-hover:text-white/80 transition-colors duration-500 font-medium">
-                                        {service.description}
-                                    </p>
-
-                                    <div className="space-y-3 mb-10">
-                                        {service.features.map((feature, j) => (
-                                            <div key={j} className="flex items-center gap-2.5 text-xs sm:text-sm text-navy-600 group-hover:text-white/90 transition-colors duration-500 font-bold">
-                                                <div className="w-4 h-4 rounded-full bg-accent-50 group-hover:bg-white/20 flex items-center justify-center flex-shrink-0 transition-colors">
-                                                    <svg className="w-2.5 h-2.5 text-accent-500 group-hover:text-white flex-shrink-0 transition-colors" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                    </svg>
-                                                </div>
-                                                {feature}
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="pt-6">
-                                        <a
-                                            href="#pricing"
-                                            className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-navy-900 group-hover:text-white transition-colors duration-500"
-                                        >
-                                            {t("services.view_pricing")}
-                                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                        </a>
-                                    </div>
-                                </div>
+                            {/* Tag + Title stacked */}
+                            <div className="w-52 shrink-0">
+                                <span className="text-[9px] font-mono font-bold uppercase tracking-[0.25em] text-accent-400/50 block mb-1">
+                                    {svc.tag}
+                                </span>
+                                <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-accent-400 transition-colors duration-300 leading-snug">
+                                    {svc.title}
+                                </h3>
                             </div>
-                        </motion.div>
+
+                            {/* Description */}
+                            <p className="text-white/35 text-sm leading-relaxed flex-1">
+                                {svc.desc}
+                            </p>
+
+                            {/* Features inline */}
+                            <div className="hidden lg:flex items-center gap-2 shrink-0">
+                                {svc.features.map((f, fi) => (
+                                    <span key={fi} className="text-[9px] font-mono font-bold uppercase tracking-[0.1em] text-white/25 px-2.5 py-1 border border-white/[0.08] rounded-md whitespace-nowrap">
+                                        {f}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Arrow */}
+                            <ArrowUpRight size={16} className="text-white/15 group-hover:text-accent-400 transition-colors duration-300 shrink-0" />
+                        </motion.a>
                     ))}
                 </div>
             </div>

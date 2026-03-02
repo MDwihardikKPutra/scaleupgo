@@ -16,13 +16,8 @@ export default function Pricing() {
             description: t("pricing.desc1"),
             popular: false,
             features: [
-                t("pricing.feat_lp1"),
-                t("pricing.feat_lp2"),
-                t("pricing.feat_lp3"),
-                t("pricing.feat_lp4"),
-                t("pricing.feat_lp5"),
-                t("pricing.feat_lp6"),
-                t("pricing.feat_lp7"),
+                t("pricing.feat_lp1"), t("pricing.feat_lp2"), t("pricing.feat_lp3"),
+                t("pricing.feat_lp4"), t("pricing.feat_lp5"), t("pricing.feat_lp6"), t("pricing.feat_lp7"),
             ],
         },
         {
@@ -32,14 +27,8 @@ export default function Pricing() {
             description: t("pricing.desc2"),
             popular: true,
             features: [
-                t("pricing.feat_cp1"),
-                t("pricing.feat_cp2"),
-                t("pricing.feat_cp3"),
-                t("pricing.feat_cp4"),
-                t("pricing.feat_cp5"),
-                t("pricing.feat_cp6"),
-                t("pricing.feat_cp7"),
-                t("pricing.feat_cp8"),
+                t("pricing.feat_cp1"), t("pricing.feat_cp2"), t("pricing.feat_cp3"), t("pricing.feat_cp4"),
+                t("pricing.feat_cp5"), t("pricing.feat_cp6"), t("pricing.feat_cp7"), t("pricing.feat_cp8"),
             ],
         },
         {
@@ -49,95 +38,77 @@ export default function Pricing() {
             description: t("pricing.desc3"),
             popular: false,
             features: [
-                t("pricing.feat_to1"),
-                t("pricing.feat_to2"),
-                t("pricing.feat_to3"),
-                t("pricing.feat_to4"),
-                t("pricing.feat_to5"),
-                t("pricing.feat_to6"),
-                t("pricing.feat_to7"),
+                t("pricing.feat_to1"), t("pricing.feat_to2"), t("pricing.feat_to3"),
+                t("pricing.feat_to4"), t("pricing.feat_to5"), t("pricing.feat_to6"), t("pricing.feat_to7"),
             ],
         },
     ];
 
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-80px" });
+    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
     return (
-        <section id="pricing" className="py-20 sm:py-28 bg-light-surface relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-border to-transparent" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent-400/5 rounded-full blur-3xl pointer-events-none" />
-
-            <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Header Standardized */}
+        <section id="pricing" className="min-h-screen flex items-center bg-[#F5F5F7] border-t border-black/[0.06]">
+            <div ref={ref} className="w-full max-w-6xl mx-auto px-6 lg:px-8 py-16">
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.7, ease }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-block px-4 py-1.5 bg-accent-50 text-accent-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-4">
+                    <span className="text-accent-600 text-[11px] font-mono font-bold uppercase tracking-[0.3em]">
                         {t("pricing.label")}
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-900 tracking-tighter mb-4">
+                    <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-[#01040D] tracking-[-0.03em]">
                         {t("pricing.title1")}{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
-                            {t("pricing.title2")}
-                        </span>
+                        <span className="text-accent-600 italic font-light">{t("pricing.title2")}</span>
                     </h2>
-                    <p className="mt-4 text-sm sm:text-base font-medium text-navy-500 max-w-2xl mx-auto leading-relaxed">
+                    <p className="mt-5 text-[#01040D]/50 text-lg max-w-xl mx-auto">
                         {t("pricing.desc")}
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8 items-start">
+                {/* Cards — bigger padding */}
+                <div className="grid md:grid-cols-3 gap-5 items-start">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 14 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.1 * i }}
-                            whileHover={{ y: plan.popular ? -15 : -10 }}
-                            className="group relative"
+                            transition={{ duration: 0.6, ease, delay: 0.07 * i }}
+                            className="relative"
                         >
                             {plan.popular && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    transition={{ delay: 1, duration: 0.5 }}
-                                    className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"
-                                >
-                                    <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-500 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-xl shadow-accent-500/30 animate-bounce-subtle">
-                                        <Star size={10} fill="currentColor" />
+                                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+                                    <div className="flex items-center gap-1.5 px-3.5 py-1 bg-accent-500 text-white text-[9px] font-mono font-bold uppercase tracking-[0.2em] rounded-full">
+                                        <Star size={9} fill="currentColor" />
                                         {t("pricing.popular")}
                                     </div>
-                                </motion.div>
+                                </div>
                             )}
 
-                            <div className={`relative h-full p-8 sm:p-10 rounded-[2rem] border transition-all duration-500 bg-white ${plan.popular
-                                ? "border-accent-200 shadow-2xl shadow-accent-500/10 scale-[1.03] z-10"
-                                : "border-light-border hover:border-navy-200 hover:shadow-xl"
+                            <div className={`relative p-9 rounded-2xl border bg-white transition-colors duration-300 ${plan.popular
+                                ? "border-accent-200 ring-1 ring-accent-200"
+                                : "border-black/[0.08] hover:border-black/[0.14]"
                                 }`}>
-                                <h3 className="text-xl sm:text-2xl font-black text-navy-900 tracking-tight">{plan.name}</h3>
-                                <p className="text-navy-500 text-sm mt-2 mb-8 font-medium">{plan.description}</p>
+                                <h3 className="text-xl font-bold text-[#01040D] tracking-tight mb-2">{plan.name}</h3>
+                                <p className="text-slate-500 text-sm mb-8 leading-relaxed">{plan.description}</p>
 
-                                <div className="flex items-baseline gap-1 mb-8">
-                                    <div className="flex flex-col">
-                                        <span className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">{t("pricing.starting")}</span>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl sm:text-4xl font-black text-navy-900 tracking-tighter">Rp {plan.price}</span>
-                                            <span className="text-navy-400 text-xs font-bold font-mono">/{plan.period}</span>
-                                        </div>
+                                <div className="mb-8">
+                                    <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">{t("pricing.starting")}</span>
+                                    <div className="flex items-baseline gap-1 mt-1">
+                                        <span className="text-4xl font-bold text-[#01040D] tracking-tighter">Rp {plan.price}</span>
+                                        <span className="text-slate-400 text-[10px] font-mono">/{plan.period}</span>
                                     </div>
                                 </div>
 
-                                <div className="space-y-4 mb-10">
+                                <div className="space-y-3.5 mb-9">
                                     {plan.features.map((feature, j) => (
-                                        <div key={j} className="flex items-center gap-3 text-xs sm:text-sm text-navy-600 font-bold">
-                                            <div className="w-5 h-5 rounded-full bg-accent-50 flex items-center justify-center flex-shrink-0">
-                                                <Check size={12} className="text-accent-500 stroke-[3]" />
-                                            </div>
+                                        <div key={j} className="flex items-center gap-3 text-sm text-slate-600">
+                                            <Check size={14} className="text-accent-500 flex-shrink-0 stroke-[2.5]" />
                                             {feature}
                                         </div>
                                     ))}
@@ -147,9 +118,9 @@ export default function Pricing() {
                                     href="https://wa.me/6281234567890"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`block w-full py-4 text-center text-[11px] font-black uppercase tracking-widest rounded-2xl active:scale-[0.98] transition-all duration-300 ${plan.popular
-                                        ? "bg-accent-500 text-white hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/30"
-                                        : "bg-navy-900 text-white hover:bg-navy-800 hover:shadow-xl shadow-navy-900/10"
+                                    className={`block w-full py-3.5 text-center text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl active:scale-[0.98] transition-all duration-300 ${plan.popular
+                                        ? "bg-accent-500 text-white hover:bg-accent-600"
+                                        : "bg-[#01040D] text-white hover:bg-slate-800"
                                         }`}
                                 >
                                     {t("pricing.cta")}

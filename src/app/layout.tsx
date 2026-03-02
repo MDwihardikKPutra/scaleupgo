@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Changa_One } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Serif_Display, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -9,10 +9,16 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const changaOne = Changa_One({
-  variable: "--font-changa-one",
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,14 +28,18 @@ export const metadata: Metadata = {
     template: "%s | ScaleUp.Go",
   },
   description:
-    "Ubah followers jadi pembeli. Stop cara manual, biarkan website bekerja 24 jam untuk bisnis Anda. Jasa pembuatan website profesional untuk UMKM.",
+    "Bisnis yang tidak hadir secara digital, tidak akan terlihat. ScaleUp.Go bantu UMKM go digital — website profesional, tampil kredibel, dan tumbuh lebih cepat.",
   keywords: [
     "jasa pembuatan website",
-    "landing page",
-    "toko online",
-    "UMKM digital",
+    "jasa website UMKM",
+    "landing page profesional",
+    "toko online Indonesia",
+    "company profile website",
+    "go digital UMKM",
     "ScaleUp.Go",
-    "digital marketing indonesia",
+    "website bisnis Indonesia",
+    "digital marketing Indonesia",
+    "website murah profesional",
   ],
   authors: [{ name: "ScaleUp.Go Team" }],
   creator: "ScaleUp.Go",
@@ -44,7 +54,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "ScaleUp.Go — Scale Up Your Business, Go Digital",
-    description: "Jasa pembuatan website profesional untuk UMKM. Ubah followers jadi pembeli.",
+    description:
+      "Bisnis Anda layak tampil digital. Kami bantu UMKM hadir online dengan website profesional yang convert — landing page, company profile, dan toko online.",
     url: "https://scaleupgo.solutions",
     siteName: "ScaleUp.Go",
     images: [
@@ -52,7 +63,7 @@ export const metadata: Metadata = {
         url: "/ScaleUp.GO.png",
         width: 1200,
         height: 630,
-        alt: "ScaleUp.Go Logo",
+        alt: "ScaleUp.Go — Scale Up Your Business, Go Digital",
       },
     ],
     locale: "id_ID",
@@ -61,7 +72,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ScaleUp.Go — Scale Up Your Business, Go Digital",
-    description: "Jasa pembuatan website profesional untuk UMKM. Ubah followers jadi pembeli.",
+    description:
+      "Bisnis Anda layak tampil digital. Website profesional untuk UMKM — hadir, tampil kredibel, dan tumbuh lebih cepat.",
     images: ["/ScaleUp.GO.png"],
   },
   robots: {
@@ -120,7 +132,7 @@ export default function RootLayout({
 
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${plusJakarta.variable} ${changaOne.variable} antialiased font-sans`}>
+      <body className={`${plusJakarta.variable} ${dmSerif.variable} ${spaceMono.variable}`}>
         <Script
           id="json-ld"
           type="application/ld+json"

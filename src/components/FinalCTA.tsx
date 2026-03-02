@@ -2,57 +2,50 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export default function FinalCTA() {
     const { t } = useLanguage();
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-80px" });
+    const ease = [0.16, 1, 0.3, 1];
 
     return (
-        <section className="relative overflow-hidden">
+        <section className="relative">
             {/* CTA Section */}
-            <div className="bg-dark-bg py-24 sm:py-32 relative">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-500/10 rounded-full blur-[120px]" />
-                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-600/10 rounded-full blur-[120px]" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-500/5 rounded-full blur-[120px]" />
-                </div>
-
-                <div ref={ref} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="py-20 bg-[#01040D] border-t border-white/[0.06]">
+                <div ref={ref} className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 14 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.7, ease }}
                     >
-                        <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8">
-                            <MessageCircle size={14} className="animate-bounce" />
+                        <span className="text-accent-400 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">
                             {t("cta.label")}
-                        </div>
-
-                        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-8 leading-[1.1]">
+                        </span>
+                        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] leading-tight mb-5">
                             {t("cta.title1")}{" "}
-                            <span className="text-accent-400">{t("cta.title2")}</span>
+                            <span className="text-accent-400 italic font-light">{t("cta.title2")}</span>
                         </h2>
-
-                        <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto mb-12 font-medium leading-relaxed px-4">
+                        <p className="text-white/40 text-base max-w-xl mx-auto mb-10">
                             {t("cta.desc")}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4">
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <a
                                 href={`https://wa.me/6281234567890?text=${encodeURIComponent(t("cta.wa_message"))}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-navy-950 font-black text-sm rounded-2xl hover:bg-accent-50 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
+                                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent-500 text-white text-sm font-semibold rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
                             >
                                 {t("cta.wa")}
-                                <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
+                                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                             </a>
                             <a
                                 href="#pricing"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold text-sm rounded-2xl border border-white/20 backdrop-blur-md hover:bg-white/20 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/[0.06] text-white/70 text-sm font-medium rounded-xl border border-white/[0.08] hover:bg-white/[0.09] hover:border-white/[0.14] active:scale-[0.98] transition-all duration-300"
                             >
                                 {t("cta.pricing")}
                             </a>
@@ -61,44 +54,57 @@ export default function FinalCTA() {
                 </div>
             </div>
 
-            {/* Footer Standardized */}
-            <footer className="bg-dark-bg border-t border-white/10 py-12 sm:py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4">
-                        <div className="flex flex-col items-center md:items-start gap-4">
-                            <div className="flex items-center gap-1.5">
-                                <span className="text-2xl text-white font-bold" style={{ fontFamily: "var(--font-changa-one)" }}>
+            {/* Footer */}
+            <footer className="bg-[#01040D] border-t border-white/[0.06] py-12">
+                <div className="max-w-6xl mx-auto px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+                        {/* Brand */}
+                        <div>
+                            <Link href="/" className="flex items-center">
+                                <span className="text-xl text-white tracking-tighter" style={{ fontFamily: "var(--font-changa-one)" }}>
                                     ScaleUp
                                 </span>
-                                <span className="text-2xl text-accent-500 font-bold" style={{ fontFamily: "var(--font-changa-one)" }}>
+                                <span className="text-xl text-accent-400" style={{ fontFamily: "var(--font-changa-one)" }}>
                                     .Go
                                 </span>
-                            </div>
-                            <p className="text-white/40 text-xs font-bold tracking-tight text-center md:text-left">
+                            </Link>
+                            <p className="mt-3 text-white/25 text-xs leading-relaxed max-w-xs">
                                 {t("footer.tagline")}
                             </p>
                         </div>
 
-                        <div className="flex flex-col items-center md:items-end gap-6">
-                            <div className="flex items-center gap-8">
-                                {[
-                                    { label: t("nav.services"), id: "services" },
-                                    { label: t("nav.portfolio"), id: "portfolio" },
-                                    { label: t("nav.pricing"), id: "pricing" },
-                                    { label: t("nav.faq"), id: "faq" },
-                                ].map((item) => (
-                                    <a
-                                        key={item.id}
-                                        href={`#${item.id}`}
-                                        className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-accent-400 transition-colors"
-                                    >
-                                        {item.label}
-                                    </a>
-                                ))}
+                        {/* Links */}
+                        <div className="grid grid-cols-2 gap-10">
+                            <div>
+                                <h4 className="text-[9px] font-mono font-bold text-white/30 uppercase tracking-[0.3em] mb-4">Menu</h4>
+                                <div className="flex flex-col gap-3">
+                                    {[
+                                        { label: t("nav.services"), id: "services" },
+                                        { label: t("nav.portfolio"), id: "portfolio" },
+                                        { label: t("nav.pricing"), id: "pricing" },
+                                        { label: t("nav.faq"), id: "faq" },
+                                    ].map((item) => (
+                                        <a
+                                            key={item.id}
+                                            href={`#${item.id}`}
+                                            className="text-xs text-white/40 hover:text-white/70 transition-colors"
+                                        >
+                                            {item.label}
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
-                            <p className="text-white/20 text-[9px] font-black tracking-[0.3em] uppercase mt-2">
-                                {t("footer.rights")}
-                            </p>
+                            <div>
+                                <h4 className="text-[9px] font-mono font-bold text-white/30 uppercase tracking-[0.3em] mb-4">Legal</h4>
+                                <div className="flex flex-col gap-3">
+                                    <p className="text-xs text-white/25">
+                                        © {new Date().getFullYear()} ScaleUp.Go
+                                    </p>
+                                    <p className="text-[9px] font-mono text-white/15 uppercase tracking-widest">
+                                        All rights reserved
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

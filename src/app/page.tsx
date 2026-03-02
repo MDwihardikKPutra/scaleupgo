@@ -9,7 +9,7 @@ import FinalCTA from "@/components/FinalCTA";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative" style={{ position: "relative" }}>
       <Navbar />
       <Hero />
       <ProblemSolution />

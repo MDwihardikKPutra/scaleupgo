@@ -1,244 +1,126 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Monitor, Smartphone, CheckCircle2 } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import HeroCanvas from "@/components/HeroCanvas";
+import { useRef } from "react";
 
 export default function Hero() {
     const { t } = useLanguage();
+    const sectionRef = useRef<HTMLElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"],
+    });
+
+    // Canvas BG moves up slower (40% speed) → lags behind
+    const canvasY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+    // Content moves up faster (20%) → separates from bg
+    const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+    // Content fades as user scrolls away
+    const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg pt-20 lg:pt-0">
-            {/* Background Decorations */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-500/10 rounded-full blur-[120px]" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-600/10 rounded-full blur-[120px]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-500/5 rounded-full blur-[120px]" />
-            </div>
+        <section
+            ref={sectionRef}
+            style={{ position: "relative" }}
+            className="relative min-h-screen flex items-center bg-[#01040D] pt-20 lg:pt-0 overflow-hidden"
+        >
+            {/* ── Particle Wave Canvas — parallax layer (slow) ── */}
+            <motion.div
+                className="absolute inset-0"
+                style={{ y: canvasY }}
+            >
+                <HeroCanvas />
+            </motion.div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-12 lg:py-0">
-                    {/* Left: Content */}
+            <motion.div
+                className="max-w-6xl mx-auto px-6 lg:px-8 w-full relative z-10 py-24 lg:py-0"
+                style={{ y: contentY, opacity: contentOpacity }}
+            >
+                <div className="flex flex-col items-center text-center">
+                    {/* Label */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="inline-flex items-center gap-2 mb-6"
                     >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-accent-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8"
-                        >
-                            <span className="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse" />
+                        <span className="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse" />
+                        <span className="text-accent-400 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">
                             {t("hero.agency")}
-                        </motion.div>
-
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tighter">
-                            <motion.span
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3, duration: 0.8 }}
-                                className="block"
-                            >
-                                {t("hero.title1")}
-                            </motion.span>
-                            <motion.span
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4, duration: 0.8 }}
-                                className="block"
-                            >
-                                {t("hero.title2")}
-                            </motion.span>
-                            <motion.span
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                                className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600 block"
-                            >
-                                {t("hero.title3")}
-                            </motion.span>
-                        </h1>
-
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.6 }}
-                            className="mt-6 text-base sm:text-lg text-white/60 leading-relaxed max-w-xl font-medium"
-                        >
-                            {t("hero.desc")}
-                        </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6, duration: 0.5 }}
-                            className="mt-10 flex flex-col sm:flex-row gap-4"
-                        >
-                            <a
-                                href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white font-black text-sm rounded-2xl hover:bg-accent-600 hover:shadow-2xl hover:shadow-accent-500/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 shadow-lg shadow-accent-500/20"
-                            >
-                                {t("hero.cta")}
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </a>
-                            <a
-                                href="#services"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white font-bold text-sm rounded-2xl border border-white/15 backdrop-blur-md hover:bg-white/10 hover:border-white/30 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300"
-                            >
-                                {t("hero.secondary")}
-                            </a>
-                        </motion.div>
-
-                        {/* Trust Indicators */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8, duration: 0.5, staggerChildren: 0.1 }}
-                            className="mt-12 flex flex-wrap items-center gap-8"
-                        >
-                            {[
-                                { label: t("hero.trust1"), sub: t("hero.sub1") },
-                                { label: t("hero.trust2"), sub: t("hero.sub2") },
-                            ].map((indicator, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.8 + (i * 0.1) }}
-                                    className="flex items-center gap-2.5 group cursor-default"
-                                >
-                                    <div className="w-9 h-9 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 group-hover:scale-110 transition-all duration-300">
-                                        <CheckCircle2 size={16} className="text-accent-400 group-hover:text-accent-300 transition-colors" />
-                                    </div>
-                                    <div>
-                                        <p className="text-white font-bold text-xs uppercase tracking-wider">{indicator.label}</p>
-                                        <p className="text-white/30 text-[9px] font-bold tracking-widest uppercase">{indicator.sub}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
+                        </span>
                     </motion.div>
 
-                    {/* Right: Device Mockup */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8, x: 60 }}
-                        animate={{ opacity: 1, scale: 1, x: 0 }}
-                        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative hidden lg:flex items-center justify-center"
+                    {/* Headline — stacked 3-line display */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        className="text-4xl sm:text-5xl lg:text-[68px] font-bold text-white tracking-[-0.04em] leading-[1.0] mb-5"
                     >
-                        <div className="relative">
-                            <motion.div
-                                animate={{ y: [0, -12, 0] }}
-                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                                className="relative"
-                            >
-                                {/* Laptop Frame */}
-                                <div className="w-[480px] h-[300px] bg-dark-surface rounded-3xl p-3 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10">
-                                    <div className="w-full h-full bg-dark-card rounded-2xl overflow-hidden relative border border-white/5">
-                                        <div className="flex items-center gap-1.5 px-4 py-2 bg-dark-bg/50 backdrop-blur-md border-b border-white/5">
-                                            <div className="flex gap-1">
-                                                <div className="w-2 h-2 rounded-full bg-red-400/40" />
-                                                <div className="w-2 h-2 rounded-full bg-yellow-400/40" />
-                                                <div className="w-2 h-2 rounded-full bg-green-400/40" />
-                                            </div>
-                                            <div className="ml-3 flex-1 h-5 bg-dark-surface/50 border border-white/5 rounded-md flex items-center px-2">
-                                                <span className="text-[9px] text-white/20 font-medium tracking-tight">www.scaleup-go.com</span>
-                                            </div>
-                                        </div>
-                                        <div className="p-5 space-y-4">
-                                            <div className="flex items-center justify-between">
-                                                <div className="h-3 w-20 bg-white/5 rounded-full" />
-                                                <div className="flex gap-2">
-                                                    <div className="h-2 w-8 bg-white/5 rounded-full" />
-                                                    <div className="h-2 w-8 bg-white/5 rounded-full" />
-                                                </div>
-                                            </div>
-                                            <div className="h-28 bg-accent-500/5 rounded-xl border border-accent-500/10 flex items-center justify-center">
-                                                <div className="text-center">
-                                                    <div className="w-7 h-7 rounded-full bg-accent-500/20 flex items-center justify-center mx-auto mb-2">
-                                                        <Monitor size={12} className="text-accent-400" />
-                                                    </div>
-                                                    <span className="text-white/20 text-[9px] font-black uppercase tracking-[0.2em]">Scale Up</span>
-                                                </div>
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-3">
-                                                <div className="h-16 bg-white/5 rounded-xl" />
-                                                <div className="h-16 bg-white/5 rounded-xl" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* Base */}
-                                <div className="w-[520px] h-4 bg-dark-surface/80 rounded-b-2xl mx-auto -mt-0.5 border-x border-b border-white/10 blur-[0.5px]" />
-                            </motion.div>
+                        {t("hero.title1")} {t("hero.title2")}{" "}
+                        <span className="text-accent-400 italic font-light">{t("hero.title3")}</span>
+                    </motion.h1>
 
-                            {/* Phone Mockup */}
-                            <motion.div
-                                animate={{ y: [0, -8, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                                className="absolute -bottom-10 -right-8 hidden xl:block"
-                            >
-                                <div className="w-[120px] h-[220px] bg-dark-surface rounded-[2rem] p-1.5 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] border border-white/10">
-                                    <div className="w-full h-full bg-dark-card rounded-[1.75rem] overflow-hidden relative border border-white/5">
-                                        <div className="flex justify-center pt-2">
-                                            <div className="w-12 h-1.5 bg-dark-bg rounded-full" />
-                                        </div>
-                                        <div className="p-3 space-y-3 mt-1">
-                                            <div className="h-16 bg-accent-500/5 rounded-lg border border-accent-500/10" />
-                                            <div className="space-y-1.5">
-                                                <div className="h-6 bg-white/5 rounded-md" />
-                                                <div className="h-6 bg-white/5 rounded-md" />
-                                                <div className="h-5 bg-accent-500/10 rounded-md" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                    {/* Subtext */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+                        className="text-white/40 text-base sm:text-lg leading-relaxed max-w-2xl mb-10"
+                    >
+                        {t("hero.desc")}
+                    </motion.p>
 
-                            {/* Floating Elements */}
-                            <motion.div
-                                animate={{ y: [0, -6, 0], rotate: [0, 4, 0] }}
-                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-8 -left-8 px-5 py-2.5 bg-dark-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 z-20"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 bg-green-500/10 rounded-full flex items-center justify-center">
-                                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-                                            <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-black text-white uppercase tracking-wider">New Order</p>
-                                        <p className="text-[9px] font-bold text-white/40 tracking-tight">Dashboard</p>
-                                    </div>
-                                </div>
-                            </motion.div>
+                    {/* CTAs */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        className="flex flex-col sm:flex-row gap-3"
+                    >
+                        <a
+                            href="https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent-500 text-white text-sm font-semibold rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
+                        >
+                            {t("hero.cta")}
+                            <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                        <a
+                            href="#services"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 text-white/80 text-sm font-medium rounded-xl border border-white/10 hover:bg-white/8 hover:border-white/15 active:scale-[0.98] transition-all duration-300"
+                        >
+                            {t("hero.secondary")}
+                        </a>
+                    </motion.div>
 
-                            <motion.div
-                                animate={{ y: [0, -10, 0], rotate: [0, -2, 0] }}
-                                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                                className="absolute bottom-4 -left-12 px-5 py-2.5 bg-dark-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 z-20"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 bg-accent-500/10 rounded-full flex items-center justify-center">
-                                        <span className="text-accent-400 text-[10px] font-black tracking-tighter">24H</span>
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-black text-white uppercase tracking-wider">Live Site</p>
-                                        <p className="text-[9px] font-bold text-white/40 tracking-tight">Online</p>
-                                    </div>
+                    {/* Trust indicators */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 0.6 }}
+                        className="mt-14 flex flex-wrap items-center justify-center gap-8"
+                    >
+                        {[
+                            { label: t("hero.trust1"), sub: t("hero.sub1") },
+                            { label: t("hero.trust2"), sub: t("hero.sub2") },
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-2.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-accent-400" />
+                                <div>
+                                    <p className="text-white text-xs font-semibold">{item.label}</p>
+                                    <p className="text-white/25 text-[10px] font-mono uppercase tracking-widest">{item.sub}</p>
                                 </div>
-                            </motion.div>
-                        </div>
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
