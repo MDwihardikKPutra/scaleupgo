@@ -37,7 +37,7 @@ export default function Portfolio() {
                 </motion.div>
 
                 <div className="grid md:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
-                    {projects.map((project, i) => (
+                    {projects.slice(0, 3).map((project, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 40 }}
