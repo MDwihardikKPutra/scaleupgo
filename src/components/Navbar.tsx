@@ -16,8 +16,8 @@ export default function Navbar() {
     const isDarkPage = pathname === "/" || pathname === "/market";
 
     const navLinks = [
-        { label: t("nav.services"), href: isHome ? "#services" : "/#services", icon: null },
         { label: t("nav.why_digital"), href: isHome ? "#why-digital" : "/#why-digital", icon: null },
+        { label: t("nav.services"), href: isHome ? "#services" : "/#services", icon: null },
         { label: t("nav.portfolio"), href: isHome ? "#portfolio" : "/#portfolio", icon: null },
         { label: t("nav.pricing"), href: isHome ? "#pricing" : "/#pricing", icon: null },
         { label: t("nav.market"), href: "/market", icon: ShoppingBag },
