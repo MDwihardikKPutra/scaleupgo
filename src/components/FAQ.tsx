@@ -19,7 +19,7 @@ export default function FAQ() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const ease = [0.16, 1, 0.3, 1];
+    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
     return (
         <section id="faq" className="py-20 bg-white border-t border-black/[0.06]">

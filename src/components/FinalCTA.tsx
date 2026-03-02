@@ -10,7 +10,7 @@ export default function FinalCTA() {
     const { t } = useLanguage();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
-    const ease = [0.16, 1, 0.3, 1];
+    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
     return (
         <section className="relative">
