@@ -1,26 +1,29 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/portfolio";
+import { EASE, VIEWPORT } from "@/lib/motion";
+
+const DISPLAYED_PROJECTS = 3;
 
 export default function Portfolio() {
     const { t } = useLanguage();
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-80px" });
-    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
+    const isInView = useInView(ref, VIEWPORT);
 
     return (
         <section id="portfolio" className="min-h-screen flex items-center bg-white border-t border-black/[0.06]">
             <div ref={ref} className="w-full max-w-6xl mx-auto px-6 lg:px-8 py-16">
+
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 14 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.7, ease }}
+                    transition={{ duration: 0.7, ease: EASE }}
                     className="text-center mb-16"
                 >
                     <span className="text-accent-600 text-[11px] font-mono font-bold uppercase tracking-[0.3em]">
@@ -34,15 +37,15 @@ export default function Portfolio() {
                     </p>
                 </motion.div>
 
-                {/* Grid — taller images */}
+                {/* Grid */}
                 <div className="grid md:grid-cols-3 gap-5">
-                    {projects.slice(0, 3).map((project, i) => (
+                    {projects.slice(0, DISPLAYED_PROJECTS).map((project, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 14 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, ease, delay: 0.07 * i }}
+                            transition={{ duration: 0.6, ease: EASE, delay: 0.07 * i }}
                             className="group"
                         >
                             <a
@@ -52,7 +55,7 @@ export default function Portfolio() {
                                 className="block"
                             >
                                 <div className="rounded-2xl overflow-hidden border border-black/[0.07] hover:border-black/[0.14] transition-colors duration-500 bg-white">
-                                    {/* Image — taller */}
+                                    {/* Image */}
                                     <div className="relative h-64 overflow-hidden bg-slate-50">
                                         <Image
                                             src={project.image}

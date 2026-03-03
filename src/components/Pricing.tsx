@@ -1,12 +1,17 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Check, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { EASE, VIEWPORT } from "@/lib/motion";
+
+const WA_LINK = "https://wa.me/6281234567890";
 
 export default function Pricing() {
     const { t } = useLanguage();
+    const ref = useRef(null);
+    const isInView = useInView(ref, VIEWPORT);
 
     const plans = [
         {
@@ -44,18 +49,15 @@ export default function Pricing() {
         },
     ];
 
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-80px" });
-    const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
     return (
         <section id="pricing" className="min-h-screen flex items-center bg-[#F5F5F7] border-t border-black/[0.06]">
             <div ref={ref} className="w-full max-w-6xl mx-auto px-6 lg:px-8 py-16">
+
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 14 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.7, ease }}
+                    transition={{ duration: 0.7, ease: EASE }}
                     className="text-center mb-16"
                 >
                     <span className="text-accent-600 text-[11px] font-mono font-bold uppercase tracking-[0.3em]">
@@ -70,7 +72,7 @@ export default function Pricing() {
                     </p>
                 </motion.div>
 
-                {/* Cards — bigger padding */}
+                {/* Cards */}
                 <div className="grid md:grid-cols-3 gap-5 items-start">
                     {plans.map((plan, i) => (
                         <motion.div
@@ -78,7 +80,7 @@ export default function Pricing() {
                             initial={{ opacity: 0, y: 14 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, ease, delay: 0.07 * i }}
+                            transition={{ duration: 0.6, ease: EASE, delay: 0.07 * i }}
                             className="relative"
                         >
                             {plan.popular && (
@@ -91,14 +93,16 @@ export default function Pricing() {
                             )}
 
                             <div className={`relative p-9 rounded-2xl border bg-white transition-colors duration-300 ${plan.popular
-                                ? "border-accent-200 ring-1 ring-accent-200"
-                                : "border-black/[0.08] hover:border-black/[0.14]"
+                                    ? "border-accent-200 ring-1 ring-accent-200"
+                                    : "border-black/[0.08] hover:border-black/[0.14]"
                                 }`}>
                                 <h3 className="text-xl font-bold text-[#01040D] tracking-tight mb-2">{plan.name}</h3>
                                 <p className="text-slate-500 text-sm mb-8 leading-relaxed">{plan.description}</p>
 
                                 <div className="mb-8">
-                                    <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">{t("pricing.starting")}</span>
+                                    <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                        {t("pricing.starting")}
+                                    </span>
                                     <div className="flex items-baseline gap-1 mt-1">
                                         <span className="text-4xl font-bold text-[#01040D] tracking-tighter">Rp {plan.price}</span>
                                         <span className="text-slate-400 text-[10px] font-mono">/{plan.period}</span>
@@ -115,12 +119,12 @@ export default function Pricing() {
                                 </div>
 
                                 <a
-                                    href="https://wa.me/6281234567890"
+                                    href={WA_LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`block w-full py-3.5 text-center text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl active:scale-[0.98] transition-all duration-300 ${plan.popular
-                                        ? "bg-accent-500 text-white hover:bg-accent-600"
-                                        : "bg-[#01040D] text-white hover:bg-slate-800"
+                                            ? "bg-accent-500 text-white hover:bg-accent-600"
+                                            : "bg-[#01040D] text-white hover:bg-slate-800"
                                         }`}
                                 >
                                     {t("pricing.cta")}

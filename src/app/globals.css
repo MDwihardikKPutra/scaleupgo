@@ -72,3 +72,45 @@ body {
   background-color: #2563EB;
   color: #ffffff;
 }
+
+/* ── Word Ticker Flip Animation for Hero Headline ── */
+
+/* Wrapper — no clip, just keeps words inline */
+.word-flip-clip {
+  display: inline-block;
+}
+
+/* Words fade up and fade back in from below */
+.word-flip-inner {
+  display: inline-block;
+  animation: wordFlip 5s ease-in-out infinite;
+}
+
+@keyframes wordFlip {
+
+  /* Sit still and be readable */
+  0%,
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Fade out going up */
+  73% {
+    transform: translateY(-25%);
+    opacity: 0;
+  }
+
+  /* Snap below, still invisible */
+  73.1% {
+    transform: translateY(25%);
+    opacity: 0;
+  }
+
+  /* Fade back in from below */
+  86%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
