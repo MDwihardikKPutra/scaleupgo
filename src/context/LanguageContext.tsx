@@ -15,6 +15,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const translations: Record<Language, Record<string, string>> = {
     id: {
         // Navbar
+        "nav.services": "Solusi",
         "nav.why_digital": "Why Digital",
         "nav.portfolio": "Portofolio",
         "nav.pricing": "Investasi",
