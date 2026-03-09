@@ -15,9 +15,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const translations: Record<Language, Record<string, string>> = {
     id: {
         // Navbar
-        "nav.services": "Solusi",
         "nav.why_digital": "Why Digital",
-        "nav.portfolio": "Karya",
+        "nav.portfolio": "Portofolio",
         "nav.pricing": "Investasi",
         "nav.faq": "FAQ",
         "nav.contact": "Hubungi Kami",
@@ -27,7 +26,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "hero.title1": "Scale Up",
         "hero.title2": "Bisnis Anda,",
         "hero.title3": "Go Digital.",
-        "hero.desc": "Bisnis yang tidak hadir secara digital, tidak akan terlihat. Kami bantu Anda hadir, tampil profesional, dan tumbuh lebih cepat.",
+        "hero.desc": "Bisnis yang tidak hadir secara digital, tidak akan terlihat. Kami bantu Anda hadir online, tampil profesional, dan tumbuh lebih cepat.",
         "hero.cta": "Mulai Sekarang",
         "hero.secondary": "Lihat Layanan",
         "hero.trust1": "50+ Klien",
@@ -36,7 +35,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "hero.sub2": "Terpercaya",
 
         // Services
-        "services.label": "Pilih Jalanmu",
+        "services.label": "Solusi",
         "services.title1": "Tiga Cara untuk",
         "services.title2": "Go Digital",
         "services.desc": "Setiap bisnis punya kebutuhan berbeda. Kami siapkan solusi yang pas.",
@@ -66,7 +65,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "why.title2": "Jasa Website",
         "why.desc": "Kami adalah partner pertumbuhan digital Anda — dari desain hingga strategi.",
         "why.desc1": "Desain yang bukan sekadar cantik, tapi dirancang untuk membuat pengunjung percaya dan mengambil tindakan.",
-        "why.desc2": "Setiap elemen dibangun dengan logika konversi. Website Anda bukan karya seni — ini mesin bisnis.",
+        "why.desc2": "Setiap elemen dibangun dengan logika konversi. Website Anda bukan sekadar pajangan — ini mesin bisnis.",
         "why.desc3": "Kami tersedia setelah website live. Konsultasi, update, dan support — karena bisnis Anda tidak berhenti di hari peluncuran.",
         "why.val1_title": "Desain Berbasis Data",
         "why.val1_sub": "Bukan Sekadar Estetik",
@@ -76,10 +75,11 @@ export const translations: Record<Language, Record<string, string>> = {
         "why.val3_sub": "Bukan Vendor Satu Kali",
 
         // Portfolio
-        "portfolio.label": "Showcase Karya",
+        // Portfolio
+        "portfolio.label": "Showcase Portofolio",
         "portfolio.title": "Portofolio",
         "portfolio.desc": "Beberapa proyek pilihan yang sudah kami selesaikan dengan standar kualitas premium.",
-        "portfolio.desc1": "Website company profile premium untuk perusahaan energi offshore dengan desain corporate modern, animasi dinamis, dan halaman sustainability.",
+        "portfolio.desc1": "Website company profile premium untuk perusahaan energi offshore dengan desain korporat modern, animasi dinamis, dan halaman sustainability.",
         "portfolio.desc2": "Website premium untuk coffee shop & brewery dengan desain modern, layout estetik, dan navigasi yang halus.",
         "portfolio.desc3": "Landing page eksklusif untuk brand fashion dengan layout estetik, galeri koleksi premium, dan navigasi yang halus.",
         "portfolio.dummy_title": "Proyek Placeholder",
@@ -97,7 +97,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "pricing.label": "Investasi Digital",
         "pricing.title1": "Harga Jelas,",
         "pricing.title2": "Tanpa Kejutan",
-        "pricing.desc": "Bukan biaya — ini investasi. Pilih paket yang sesuai dengan skala bisnis Anda sekarang.",
+        "pricing.desc": "Bukan sekadar pengeluaran — ini modal untuk tumbuh. Pilih paket yang sesuai dengan skala bisnis Anda sekarang.",
         "pricing.desc1": "Ideal untuk campaign, promosi produk, atau bisnis yang baru mulai go digital.",
         "pricing.desc2": "Bangun kepercayaan klien dan investor dengan identitas digital yang solid dan profesional.",
         "pricing.desc3": "Buat toko yang buka terus — lengkap dengan sistem order, stok, dan checkout otomatis.",
@@ -117,10 +117,10 @@ export const translations: Record<Language, Record<string, string>> = {
         "pricing.feat_cp3": "Optimasi SEO On-Page",
         "pricing.feat_cp4": "Integrasi Google Maps",
         "pricing.feat_cp5": "Blog / Berita",
-        "pricing.feat_cp6": "Widget Chat WhatsApp",
+        "pricing.feat_cp6": "Tombol Chat WhatsApp",
         "pricing.feat_cp7": "Gratis Domain .com",
         "pricing.feat_cp8": "Gratis Revisi 3x",
-        "pricing.feat_to1": "Produk Tidak Terbatas",
+        "pricing.feat_to1": "Jumlah Produk Tidak Terbatas",
         "pricing.feat_to2": "Katalog Produk Dinamis",
         "pricing.feat_to3": "Keranjang & Checkout",
         "pricing.feat_to4": "WhatsApp Auto-Order",
@@ -156,7 +156,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "ps.p3": "Kehilangan penjualan karena tidak bisa diakses 24/7.",
         "ps.s1": "Bisnis Anda ditemukan oleh ribuan calon pelanggan online.",
         "ps.s2": "Tampil kredibel dan profesional di setiap platform.",
-        "ps.s3": "Terima pesanan & leads otomatis — bahkan saat tidur.",
+        "ps.s3": "Terima pesanan & calon pelanggan otomatis — bahkan saat tidur.",
         "ps.cta": "Siap mulai perjalanan digitalmu?",
         "ps.btn": "Konsultasi Gratis Sekarang",
 
