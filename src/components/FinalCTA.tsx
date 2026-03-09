@@ -2,9 +2,10 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import MagneticButton from "@/components/ui/MagneticButton";
 import { EASE, VIEWPORT } from "@/lib/motion";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -25,13 +26,13 @@ export default function FinalCTA() {
         { label: t("nav.faq"), id: "faq" },
     ];
 
-    const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(t("cta.wa_message"))}`;
+    const waLink = `https://wa.me/628133341706?text=${encodeURIComponent(t("cta.wa_message"))}`;
 
     return (
         <section className="relative">
             {/* ── CTA ── */}
             <div className="py-20 bg-[#01040D] border-t border-white/[0.06]">
-                <div ref={ref} className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+                <div ref={ref} className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 14 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -49,15 +50,21 @@ export default function FinalCTA() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                            <a
-                                href={waLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent-500 text-white text-sm font-semibold rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
-                            >
-                                {t("cta.wa")}
-                                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                            </a>
+                            <MagneticButton>
+                                <a
+                                    href={waLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="relative overflow-hidden group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white text-[13px] font-bold uppercase tracking-[0.1em] rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
+                                >
+                                    <span className="absolute top-0 -left-[100%] w-1/2 h-full block transform -skew-x-[20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" />
+                                    <span className="relative flex items-center gap-2">
+                                        <MessageCircle size={18} />
+                                        {t("cta.button")}
+                                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                    </span>
+                                </a>
+                            </MagneticButton>
                             <a
                                 href="#pricing"
                                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/[0.06] text-white/70 text-sm font-medium rounded-xl border border-white/[0.08] hover:bg-white/[0.09] hover:border-white/[0.14] active:scale-[0.98] transition-all duration-300"
@@ -109,6 +116,7 @@ export default function FinalCTA() {
                                 <h4 className="text-[9px] font-mono font-bold text-white/30 uppercase tracking-[0.3em] mb-4">Legal</h4>
                                 <div className="flex flex-col gap-3">
                                     <p className="text-xs text-white/25">© {CURRENT_YEAR} ScaleUp.Go</p>
+                                    <p className="text-[10px] text-white/30 font-medium">scaleupgosolution@gmail.com</p>
                                     <p className="text-[9px] font-mono text-white/15 uppercase tracking-widest">All rights reserved</p>
                                 </div>
                             </div>

@@ -88,7 +88,7 @@ export default function Navbar() {
                                 {language === "id" ? "ID" : "EN"}
                             </button>
                             <a
-                                href="https://wa.me/6281234567890"
+                                href="https://wa.me/628133341706"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-4 py-2 bg-accent-500 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl hover:bg-accent-600 active:scale-[0.97] transition-all duration-300"
@@ -143,7 +143,7 @@ export default function Navbar() {
                                     Switch to {language === "id" ? "English" : "Indonesia"}
                                 </button>
                                 <a
-                                    href="https://wa.me/6281234567890"
+                                    href="https://wa.me/628133341706"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block w-full py-3 bg-accent-500 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl text-center hover:bg-accent-600 active:scale-[0.98] transition-all duration-200"

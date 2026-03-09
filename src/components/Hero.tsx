@@ -6,12 +6,13 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import HeroCanvas from "@/components/HeroCanvas";
 import AnimatedHeroText from "@/components/AnimatedHeroText";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const WA_LINK = "https://wa.me/6281234567890?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website";
+const WA_LINK = "https://wa.me/628133341706?text=Halo%20ScaleUp.Go,%20saya%20ingin%20buat%20website";
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -27,10 +28,6 @@ export default function Hero() {
     const canvasY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
     const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
-    const trustItems = [
-        { label: t("hero.trust1"), sub: t("hero.sub1") },
-        { label: t("hero.trust2"), sub: t("hero.sub2") },
-    ];
 
     return (
         <section
@@ -94,15 +91,20 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         className="flex flex-col sm:flex-row gap-3"
                     >
-                        <a
-                            href={WA_LINK}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent-500 text-white text-sm font-semibold rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
-                        >
-                            {t("hero.cta")}
-                            <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                        </a>
+                        <MagneticButton>
+                            <a
+                                href={WA_LINK}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="relative overflow-hidden group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent-500 text-white text-sm font-semibold rounded-xl hover:bg-accent-600 active:scale-[0.98] transition-all duration-300"
+                            >
+                                <span className="absolute top-0 -left-[100%] w-1/2 h-full block transform -skew-x-[20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" />
+                                <span className="relative flex items-center gap-2">
+                                    {t("hero.cta")}
+                                    <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                                </span>
+                            </a>
+                        </MagneticButton>
                         <a
                             href="#services"
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 text-white/80 text-sm font-medium rounded-xl border border-white/10 hover:bg-white/[0.08] hover:border-white/15 active:scale-[0.98] transition-all duration-300"
@@ -111,23 +113,6 @@ export default function Hero() {
                         </a>
                     </motion.div>
 
-                    {/* Trust indicators */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.8 }}
-                        className="mt-10 flex flex-wrap items-center justify-center gap-8"
-                    >
-                        {trustItems.map((item, i) => (
-                            <div key={i} className="flex items-center gap-2.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-accent-400" />
-                                <div>
-                                    <p className="text-white text-xs font-semibold">{item.label}</p>
-                                    <p className="text-white/25 text-[10px] font-mono uppercase tracking-widest">{item.sub}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
 
                 </div>
             </motion.div>

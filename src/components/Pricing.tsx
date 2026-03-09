@@ -6,7 +6,7 @@ import { Check, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { EASE, VIEWPORT } from "@/lib/motion";
 
-const WA_LINK = "https://wa.me/6281234567890";
+const WA_LINK = "https://wa.me/628133341706";
 
 export default function Pricing() {
     const { t } = useLanguage();
@@ -60,14 +60,14 @@ export default function Pricing() {
                     transition={{ duration: 0.7, ease: EASE }}
                     className="text-center mb-16"
                 >
-                    <span className="text-accent-600 text-[11px] font-mono font-bold uppercase tracking-[0.3em]">
+                    <span className="text-accent-600 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">
                         {t("pricing.label")}
                     </span>
                     <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-[#01040D] tracking-[-0.03em]">
                         {t("pricing.title1")}{" "}
                         <span className="text-accent-600 italic font-light">{t("pricing.title2")}</span>
                     </h2>
-                    <p className="mt-5 text-[#01040D]/50 text-lg max-w-xl mx-auto">
+                    <p className="mt-5 text-[#01040D]/50 text-base sm:text-lg max-w-xl mx-auto">
                         {t("pricing.desc")}
                     </p>
                 </motion.div>
@@ -79,9 +79,10 @@ export default function Pricing() {
                             key={i}
                             initial={{ opacity: 0, y: 14 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, ease: EASE, delay: 0.07 * i }}
-                            className="relative"
+                            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                            className="relative group"
                         >
                             {plan.popular && (
                                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
@@ -92,9 +93,9 @@ export default function Pricing() {
                                 </div>
                             )}
 
-                            <div className={`relative p-9 rounded-2xl border bg-white transition-colors duration-300 ${plan.popular
-                                    ? "border-accent-200 ring-1 ring-accent-200"
-                                    : "border-black/[0.08] hover:border-black/[0.14]"
+                            <div className={`relative p-9 rounded-2xl border bg-white transition-all duration-300 ${plan.popular
+                                ? "border-accent-200 ring-4 ring-accent-500/10 shadow-[0_0_40px_rgba(37,99,235,0.1)] group-hover:shadow-[0_15px_50px_rgba(37,99,235,0.15)]"
+                                : "border-black/[0.08] hover:border-accent-200 group-hover:shadow-xl"
                                 }`}>
                                 <h3 className="text-xl font-bold text-[#01040D] tracking-tight mb-2">{plan.name}</h3>
                                 <p className="text-slate-500 text-sm mb-8 leading-relaxed">{plan.description}</p>
@@ -123,8 +124,8 @@ export default function Pricing() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`block w-full py-3.5 text-center text-[10px] font-bold uppercase tracking-[0.2em] rounded-xl active:scale-[0.98] transition-all duration-300 ${plan.popular
-                                            ? "bg-accent-500 text-white hover:bg-accent-600"
-                                            : "bg-[#01040D] text-white hover:bg-slate-800"
+                                        ? "bg-accent-500 text-white hover:bg-accent-600"
+                                        : "bg-[#01040D] text-white hover:bg-slate-800"
                                         }`}
                                 >
                                     {t("pricing.cta")}

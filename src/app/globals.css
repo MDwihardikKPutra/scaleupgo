@@ -56,6 +56,27 @@
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
+
+  --animate-shine: shine 3s infinite;
+  --animate-float: float 6s infinite ease-in-out;
+
+  @keyframes shine {
+    100% {
+      left: 200%;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 html {

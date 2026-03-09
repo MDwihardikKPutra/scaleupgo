@@ -26,13 +26,13 @@ export default function Portfolio() {
                     transition={{ duration: 0.7, ease: EASE }}
                     className="text-center mb-16"
                 >
-                    <span className="text-accent-600 text-[11px] font-mono font-bold uppercase tracking-[0.3em]">
+                    <span className="text-accent-600 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">
                         {t("portfolio.label")}
                     </span>
                     <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-[#01040D] tracking-[-0.03em]">
                         {t("portfolio.title")}
                     </h2>
-                    <p className="mt-5 text-[#01040D]/50 text-lg max-w-xl mx-auto">
+                    <p className="mt-5 text-[#01040D]/50 text-base sm:text-lg max-w-xl mx-auto">
                         {t("portfolio.desc")}
                     </p>
                 </motion.div>
@@ -52,18 +52,29 @@ export default function Portfolio() {
                                 href={project.href}
                                 target={project.href !== "#" ? "_blank" : undefined}
                                 rel={project.href !== "#" ? "noopener noreferrer" : undefined}
-                                className="block"
+                                className="block relative focus:outline-none"
                             >
-                                <div className="rounded-2xl overflow-hidden border border-black/[0.07] hover:border-black/[0.14] transition-colors duration-500 bg-white">
+                                {/* Subtle glow on hover */}
+                                <div className="absolute -inset-[1px] bg-gradient-to-br from-accent-500/0 via-accent-500/0 to-accent-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+
+                                <div className="relative rounded-2xl overflow-hidden border border-black/[0.07] group-hover:border-accent-200 transition-colors duration-500 bg-white shadow-sm group-hover:shadow-[0_10px_40px_rgba(37,99,235,0.08)]">
                                     {/* Image */}
                                     <div className="relative h-64 overflow-hidden bg-slate-50">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 33vw"
-                                            className={`object-cover transition-transform duration-700 group-hover:scale-105 ${project.imageClassName || "object-top"}`}
-                                        />
+                                        <motion.div
+                                            initial={{ scale: 1.15 }}
+                                            whileInView={{ scale: 1 }}
+                                            viewport={{ once: true, margin: "-50px" }}
+                                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                            className="w-full h-full"
+                                        >
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 33vw"
+                                                className={`object-cover transition-transform duration-700 group-hover:scale-105 ${project.imageClassName || "object-top"}`}
+                                            />
+                                        </motion.div>
                                         {project.isPlaceholder && (
                                             <div className="absolute top-4 right-4 z-30">
                                                 <div className="relative flex items-center justify-center">

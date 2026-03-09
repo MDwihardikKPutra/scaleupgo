@@ -49,7 +49,7 @@ export default function MarketPage() {
             language === "id"
                 ? `Halo ScaleUp.Go, saya tertarik dengan template "${project.title}". Bisa info detailnya?`
                 : `Hi ScaleUp.Go, I'm interested in the "${project.title}" template. Could you provide more details?`;
-        window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, "_blank");
+        window.open(`https://wa.me/628133341706?text=${encodeURIComponent(message)}`, "_blank");
     };
 
     return (

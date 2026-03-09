@@ -96,7 +96,7 @@ export default function ProblemSolution() {
                         <div className="px-8 py-5 border-t border-black/[0.06] bg-white flex items-center justify-between">
                             <p className="text-slate-300 text-[9px] font-mono font-bold uppercase tracking-[0.25em]">{t("ps.cta")}</p>
                             <a
-                                href="https://wa.me/6281234567890"
+                                href="https://wa.me/628133341706"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group inline-flex items-center gap-1.5 font-semibold text-accent-600 hover:text-accent-700 transition-colors text-xs"

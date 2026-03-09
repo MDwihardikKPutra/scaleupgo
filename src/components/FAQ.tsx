@@ -40,7 +40,7 @@ export default function FAQ() {
                         {t("faq.title1")}{" "}
                         <span className="text-accent-600 italic font-light">{t("faq.title2")}</span>
                     </h2>
-                    <p className="mt-4 text-[#01040D]/50 text-base max-w-xl mx-auto">
+                    <p className="mt-4 text-[#01040D]/50 text-base sm:text-lg max-w-xl mx-auto">
                         {t("faq.desc")}
                     </p>
                 </motion.div>
@@ -56,8 +56,8 @@ export default function FAQ() {
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.5, ease: EASE, delay: 0.06 * i }}
                                 className={`rounded-xl border overflow-hidden transition-colors duration-300 ${isOpen
-                                        ? "border-accent-200 bg-accent-50/30"
-                                        : "border-black/[0.07] bg-white hover:border-black/[0.12]"
+                                    ? "border-accent-200 bg-accent-50/30"
+                                    : "border-black/[0.07] bg-white hover:border-black/[0.12]"
                                     }`}
                             >
                                 <button

@@ -103,7 +103,8 @@ export default function RootLayout({
     "image": "https://scaleupgo.solutions/ScaleUp.GO.png",
     "@id": "https://scaleupgo.solutions",
     "url": "https://scaleupgo.solutions",
-    "telephone": "+6281234567890", // Example, user should update
+    "telephone": "+628133341706",
+    "email": "scaleupgosolution@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Digital Office Park",

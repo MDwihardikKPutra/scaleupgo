@@ -51,13 +51,27 @@ export default function Services() {
                     </motion.span>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
                         <motion.h2
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.7, ease: EASE }}
-                            className="text-4xl sm:text-5xl font-bold text-white tracking-[-0.03em]"
+                            className="text-4xl sm:text-5xl font-bold text-white tracking-[-0.03em] flex flex-wrap gap-x-2.5"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={{
+                                visible: { transition: { staggerChildren: 0.1 } },
+                                hidden: {},
+                            }}
                         >
-                            {t("services.title1")}{" "}
-                            <span className="text-accent-400 italic font-light">{t("services.title2")}</span>
+                            {[...t("services.title1").split(" "), t("services.title2")].map((word, i, arr) => (
+                                <motion.span
+                                    key={i}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 15 },
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } }
+                                    }}
+                                    className={i === arr.length - 1 ? "text-accent-400 italic font-light" : ""}
+                                >
+                                    {word}
+                                </motion.span>
+                            ))}
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0 }}
@@ -76,10 +90,11 @@ export default function Services() {
                         <motion.a
                             key={i}
                             href="#pricing"
-                            initial={{ opacity: 0 }}
-                            animate={isInView ? { opacity: 1 } : {}}
-                            transition={{ duration: 0.5, ease: EASE, delay: 0.1 + 0.08 * i }}
-                            className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-7 hover:bg-white/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-300"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, ease: EASE, delay: 0.1 * i }}
+                            className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-7 px-4 -mx-4 rounded-xl hover:bg-white/[0.03] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.02)]"
                         >
                             <div className="flex items-center gap-4 sm:contents">
                                 <span className="text-white/15 text-xs font-mono w-6 shrink-0">{svc.num}</span>
@@ -105,7 +120,10 @@ export default function Services() {
                                 ))}
                             </div>
 
-                            <ArrowUpRight size={16} className="hidden sm:block text-white/15 group-hover:text-accent-400 transition-colors duration-300 shrink-0" />
+                            <div className="relative overflow-hidden w-6 h-6 flex items-center justify-center hidden sm:flex shrink-0">
+                                <ArrowUpRight size={16} className="absolute text-white/15 group-hover:text-accent-400 group-hover:translate-x-full group-hover:-translate-y-full transition-all duration-300" />
+                                <ArrowUpRight size={16} className="absolute text-accent-400 -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+                            </div>
                         </motion.a>
                     ))}
                 </div>
