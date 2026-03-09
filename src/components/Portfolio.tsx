@@ -57,7 +57,7 @@ export default function Portfolio() {
                                 {/* Subtle glow on hover */}
                                 <div className="absolute -inset-[1px] bg-gradient-to-br from-accent-500/0 via-accent-500/0 to-accent-500/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
 
-                                <div className="relative rounded-2xl overflow-hidden border border-black/[0.07] group-hover:border-accent-200 transition-colors duration-500 bg-white shadow-sm group-hover:shadow-[0_10px_40px_rgba(37,99,235,0.08)]">
+                                <div className="relative rounded-2xl overflow-hidden border border-black/[0.07] group-hover:bg-[#01040D] group-hover:border-transparent transition-all duration-500 bg-white">
                                     {/* Image */}
                                     <div className="relative h-64 overflow-hidden bg-slate-50">
                                         <motion.div
@@ -92,20 +92,20 @@ export default function Portfolio() {
 
                                     {/* Content */}
                                     <div className="p-7">
-                                        <span className="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-slate-400">
+                                        <span className="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-slate-400 group-hover:text-white/40 transition-colors duration-500">
                                             {project.category}
                                         </span>
-                                        <h3 className="mt-2 text-lg font-bold text-[#01040D] tracking-tight group-hover:text-accent-600 transition-colors">
+                                        <h3 className="mt-2 text-lg font-bold text-[#01040D] group-hover:text-white tracking-tight transition-colors duration-500">
                                             {project.title}
                                         </h3>
-                                        <p className="mt-2 text-slate-500 text-sm leading-relaxed line-clamp-2">
+                                        <p className="mt-2 text-slate-500 group-hover:text-white/60 text-sm leading-relaxed line-clamp-2 transition-colors duration-500">
                                             {t(project.descriptionKey)}
                                         </p>
                                         <div className="mt-4 flex flex-wrap gap-1.5">
                                             {project.tagKeys.map((tagKey, idx) => (
                                                 <span
                                                     key={idx}
-                                                    className="px-2 py-0.5 bg-slate-50 rounded-md text-[9px] font-mono font-bold uppercase tracking-[0.1em] text-slate-400"
+                                                    className="px-2 py-0.5 bg-slate-50 group-hover:bg-white/10 rounded-md text-[9px] font-mono font-bold uppercase tracking-[0.1em] text-slate-400 group-hover:text-white/60 transition-colors duration-500"
                                                 >
                                                     {t(tagKey)}
                                                 </span>
