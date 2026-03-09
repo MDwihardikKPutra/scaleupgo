@@ -16,7 +16,7 @@ export const translations: Record<Language, Record<string, string>> = {
     id: {
         // Navbar
         "nav.services": "Solusi",
-        "nav.why_digital": "Why Digital",
+        "nav.why_digital": "Kenapa Digital ?",
         "nav.portfolio": "Portofolio",
         "nav.pricing": "Investasi",
         "nav.faq": "FAQ",
@@ -146,7 +146,7 @@ export const translations: Record<Language, Record<string, string>> = {
         "faq.a5": "100%. Semua website kami dibangun mobile-first — tampil sempurna di HP, tablet, maupun desktop tanpa kompromi.",
 
         // Problem & Solution
-        "ps.label": "Why Digital",
+        "ps.label": "Kenapa Digital ?",
         "ps.title1": "Bisnis Offline Saja",
         "ps.title2": "Tidak Cukup Lagi",
         "ps.desc": "Pelanggan Anda sudah online. Pertanyaannya: apakah Anda juga ada di sana?",
