@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Serif_Display, Space_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -7,12 +7,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-});
-
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 const spaceMono = Space_Mono({
@@ -133,7 +128,7 @@ export default function RootLayout({
 
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${plusJakarta.variable} ${dmSerif.variable} ${spaceMono.variable}`}>
+      <body className={`${plusJakarta.variable} ${spaceMono.variable}`}>
         <Script
           id="json-ld"
           type="application/ld+json"

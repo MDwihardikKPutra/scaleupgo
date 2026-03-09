@@ -33,9 +33,10 @@
   --color-light-surface: #f8f9fa;
   --color-light-border: #e9ecef;
 
-  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "DM Serif Display", serif;
-  --font-mono: "Space Mono", monospace;
+  --font-sans: var(--font-plus-jakarta), "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-plus-jakarta), serif;
+  /* Forced to Jakarta Sans per user request */
+  --font-mono: var(--font-space-mono), monospace;
 
   --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
