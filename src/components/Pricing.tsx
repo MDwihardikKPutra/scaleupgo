@@ -93,26 +93,26 @@ export default function Pricing() {
                                 </div>
                             )}
 
-                            <div className={`relative p-9 rounded-2xl border bg-white transition-all duration-300 ${plan.popular
-                                ? "border-accent-200 ring-4 ring-accent-500/10 shadow-[0_0_40px_rgba(37,99,235,0.1)] group-hover:shadow-[0_15px_50px_rgba(37,99,235,0.15)]"
-                                : "border-black/[0.08] hover:border-accent-200 group-hover:shadow-xl"
+                            <div className={`relative p-9 rounded-2xl border transition-all duration-300 ${plan.popular
+                                ? "bg-[#01040D] border-white/10"
+                                : "bg-white border-black/[0.08] hover:border-accent-200 group-hover:shadow-xl"
                                 }`}>
-                                <h3 className="text-xl font-bold text-[#01040D] tracking-tight mb-2">{plan.name}</h3>
-                                <p className="text-slate-500 text-sm mb-8 leading-relaxed">{plan.description}</p>
+                                <h3 className={`text-xl font-bold tracking-tight mb-2 ${plan.popular ? "text-white" : "text-[#01040D]"}`}>{plan.name}</h3>
+                                <p className={`text-sm mb-8 leading-relaxed ${plan.popular ? "text-white/60" : "text-slate-500"}`}>{plan.description}</p>
 
                                 <div className="mb-8">
-                                    <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                    <span className={`text-[9px] font-mono font-bold uppercase tracking-[0.2em] ${plan.popular ? "text-white/40" : "text-slate-400"}`}>
                                         {t("pricing.starting")}
                                     </span>
                                     <div className="flex items-baseline gap-1 mt-1">
-                                        <span className="text-4xl font-bold text-[#01040D] tracking-tighter">Rp {plan.price}</span>
-                                        <span className="text-slate-400 text-[10px] font-mono">/{plan.period}</span>
+                                        <span className={`text-4xl font-bold tracking-tighter ${plan.popular ? "text-white" : "text-[#01040D]"}`}>Rp {plan.price}</span>
+                                        <span className={`text-[10px] font-mono ${plan.popular ? "text-white/40" : "text-slate-400"}`}>/{plan.period}</span>
                                     </div>
                                 </div>
 
                                 <div className="space-y-3.5 mb-9">
                                     {plan.features.map((feature, j) => (
-                                        <div key={j} className="flex items-center gap-3 text-sm text-slate-600">
+                                        <div key={j} className={`flex items-center gap-3 text-sm ${plan.popular ? "text-white/80" : "text-slate-600"}`}>
                                             <Check size={14} className="text-accent-500 flex-shrink-0 stroke-[2.5]" />
                                             {feature}
                                         </div>

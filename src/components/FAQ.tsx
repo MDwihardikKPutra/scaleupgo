@@ -56,7 +56,7 @@ export default function FAQ() {
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.5, ease: EASE, delay: 0.06 * i }}
                                 className={`rounded-xl border overflow-hidden transition-colors duration-300 ${isOpen
-                                    ? "border-accent-200 bg-accent-50/30"
+                                    ? "border-transparent bg-[#01040D]"
                                     : "border-black/[0.07] bg-white hover:border-black/[0.12]"
                                     }`}
                             >
@@ -64,10 +64,10 @@ export default function FAQ() {
                                     onClick={() => toggle(i)}
                                     className="w-full px-6 py-5 flex items-center justify-between text-left"
                                 >
-                                    <span className={`text-sm font-semibold transition-colors ${isOpen ? "text-accent-600" : "text-[#01040D]"}`}>
+                                    <span className={`text-sm font-semibold transition-colors ${isOpen ? "text-white" : "text-[#01040D]"}`}>
                                         {faq.question}
                                     </span>
-                                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 ${isOpen ? "bg-accent-500 text-white rotate-180" : "bg-black/[0.04] text-slate-400"
+                                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 ${isOpen ? "bg-white/10 text-white rotate-180" : "bg-black/[0.04] text-slate-400"
                                         }`}>
                                         <ChevronDown size={15} />
                                     </div>
@@ -82,7 +82,7 @@ export default function FAQ() {
                                             transition={{ duration: 0.4, ease: EASE }}
                                         >
                                             <div className="px-6 pb-5">
-                                                <p className="text-slate-500 text-sm leading-relaxed">{faq.answer}</p>
+                                                <p className={`text-sm leading-relaxed ${isOpen ? "text-white/60" : "text-slate-500"}`}>{faq.answer}</p>
                                             </div>
                                         </motion.div>
                                     )}

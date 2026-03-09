@@ -60,7 +60,7 @@ export default function FinalCTA() {
                                     <span className="absolute top-0 -left-[100%] w-1/2 h-full block transform -skew-x-[20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" />
                                     <span className="relative flex items-center gap-2">
                                         <MessageCircle size={18} />
-                                        {t("cta.button")}
+                                        {t("cta.wa")}
                                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </span>
                                 </a>
